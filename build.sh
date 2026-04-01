@@ -2,18 +2,11 @@
 set -e
 
 FLUTTER_VERSION="3.22.0"
+FLUTTER="$HOME/flutter/bin/flutter"
 
-# Install Flutter into home directory
+# Install Flutter ($HOME = /opt/buildhome on Cloudflare Pages)
 curl -fsSL "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
   | tar xJ -C "$HOME"
-
-# Overwrite Cloudflare's pre-installed Flutter with ours so it cannot be bypassed
-if [ -d "/opt/buildhome/flutter" ]; then
-  rm -rf /opt/buildhome/flutter 2>/dev/null || true
-  ln -sf "$HOME/flutter" /opt/buildhome/flutter 2>/dev/null || true
-fi
-
-FLUTTER="$HOME/flutter/bin/flutter"
 
 "$FLUTTER" config --no-analytics
 "$FLUTTER" pub get
