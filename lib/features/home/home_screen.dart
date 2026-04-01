@@ -48,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen>
             _HeroSection(scrollOffset: _scrollOffset),
             _MarqueeSection(),
             _AboutSection(),
+            _CommunityGallery(),
             _ProgramsSection(),
             _UpcomingEventsSection(),
             _BlogPreviewSection(),
@@ -128,6 +129,49 @@ class _HeroSection extends StatelessWidget {
             ),
           ),
 
+          // Floating image collage — desktop only
+          if (size.width > 1100)
+            Positioned(
+              right: 60,
+              top: 0,
+              bottom: 0,
+              width: 420,
+              child: Center(
+                child: SizedBox(
+                  width: 420,
+                  height: 520,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 0,
+                        right: 40,
+                        child: Transform.rotate(
+                          angle: -0.06,
+                          child: _heroImg('https://i.ibb.co/PzMZbdBK/9.png', 210, 270),
+                        ).animate().fadeIn(delay: 400.ms, duration: 800.ms).slideY(begin: 0.15),
+                      ),
+                      Positioned(
+                        top: 140,
+                        left: 0,
+                        child: Transform.rotate(
+                          angle: 0.05,
+                          child: _heroImg('https://i.ibb.co/6cfg04wL/8.png', 185, 230),
+                        ).animate().fadeIn(delay: 600.ms, duration: 800.ms).slideY(begin: 0.15),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 20,
+                        child: Transform.rotate(
+                          angle: -0.04,
+                          child: _heroImg('https://i.ibb.co/p6q9vCD8/7.png', 230, 200),
+                        ).animate().fadeIn(delay: 800.ms, duration: 800.ms).slideY(begin: 0.15),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
           // Main content
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -198,7 +242,9 @@ class _HeroSection extends StatelessWidget {
 
                 const SizedBox(height: 48),
 
-                Row(
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 12,
                   children: [
                     ElevatedButton(
                       onPressed: () => context.go('/club260'),
@@ -223,8 +269,6 @@ class _HeroSection extends StatelessWidget {
                         ),
                       ),
                     ).animate().fadeIn(delay: 600.ms).slideX(begin: -0.2),
-
-                    const SizedBox(width: 16),
 
                     OutlinedButton(
                       onPressed: () => context.go('/code260'),
@@ -278,6 +322,27 @@ class _HeroSection extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _heroImg(String url, double w, double h) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        width: w,
+        height: h,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.teal.withOpacity(0.25), width: 1),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Image.network(
+          url,
+          width: w,
+          height: h,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => Container(color: AppColors.cardBg),
+        ),
       ),
     );
   }
@@ -480,6 +545,199 @@ class _AboutSection extends StatelessWidget {
               ],
             ),
         ],
+      ),
+    );
+  }
+}
+
+// ─── Community Gallery ────────────────────────────────────────────────────────
+class _CommunityGallery extends StatelessWidget {
+  static const _images = [
+    'https://i.ibb.co/PzMZbdBK/9.png',
+    'https://i.ibb.co/6cfg04wL/8.png',
+    'https://i.ibb.co/p6q9vCD8/7.png',
+    'https://i.ibb.co/gMT25r9D/6.png',
+    'https://i.ibb.co/xq3yMYmD/5.png',
+    'https://i.ibb.co/VYZgjWZW/4.png',
+    'https://i.ibb.co/3ycFbtSN/3.png',
+    'https://i.ibb.co/zW2D0LVG/11.png',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final isWide = MediaQuery.of(context).size.width > 768;
+
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: isWide ? 60 : 24,
+      ),
+      color: AppColors.black,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Real people.\nReal moments.',
+            style: GoogleFonts.spaceMono(
+              fontSize: isWide ? 52 : 34,
+              fontWeight: FontWeight.w900,
+              color: AppColors.white,
+              height: 1.0,
+              letterSpacing: -2,
+            ),
+          ).animate().fadeIn(duration: 600.ms),
+          const SizedBox(height: 12),
+          Text(
+            'Community captured.',
+            style: GoogleFonts.inter(
+              color: AppColors.teal,
+              fontSize: 15,
+              letterSpacing: 1,
+            ),
+          ).animate().fadeIn(delay: 200.ms),
+          const SizedBox(height: 48),
+          if (isWide) _desktopGrid() else _mobileGrid(),
+        ],
+      ),
+    );
+  }
+
+  Widget _desktopGrid() {
+    // Two rows — alternate tall/short for masonry feel
+    final heights1 = [300.0, 220.0, 280.0, 200.0];
+    final heights2 = [200.0, 280.0, 220.0, 300.0];
+
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(4, (i) {
+            return Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(right: i < 3 ? 8 : 0),
+                child: _GalleryTile(
+                  url: _images[i],
+                  height: heights1[i],
+                ).animate().fadeIn(delay: Duration(milliseconds: 100 * i), duration: 600.ms),
+              ),
+            );
+          }),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: List.generate(4, (i) {
+            return Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(right: i < 3 ? 8 : 0),
+                child: _GalleryTile(
+                  url: _images[i + 4],
+                  height: heights2[i],
+                ).animate().fadeIn(delay: Duration(milliseconds: 100 * i + 200), duration: 600.ms),
+              ),
+            );
+          }),
+        ),
+      ],
+    );
+  }
+
+  Widget _mobileGrid() {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+        childAspectRatio: 0.85,
+      ),
+      itemCount: _images.length,
+      itemBuilder: (_, i) => _GalleryTile(url: _images[i], height: 0),
+    );
+  }
+}
+
+class _GalleryTile extends StatefulWidget {
+  final String url;
+  final double height;
+  const _GalleryTile({required this.url, required this.height});
+
+  @override
+  State<_GalleryTile> createState() => _GalleryTileState();
+}
+
+class _GalleryTileState extends State<_GalleryTile> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      cursor: SystemMouseCursors.zoomIn,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        height: widget.height > 0 ? widget.height : null,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: _hovered
+                ? AppColors.teal.withOpacity(0.5)
+                : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.network(
+                widget.url,
+                fit: BoxFit.cover,
+                loadingBuilder: (_, child, progress) => progress == null
+                    ? child
+                    : Container(
+                        color: AppColors.cardBg,
+                        child: const Center(
+                          child: SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 1.5,
+                              color: AppColors.teal,
+                            ),
+                          ),
+                        ),
+                      ),
+                errorBuilder: (_, __, ___) => Container(
+                  color: AppColors.cardBg,
+                  child: const Icon(
+                    Icons.image_outlined,
+                    color: AppColors.textMuted,
+                  ),
+                ),
+              ),
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 250),
+                opacity: _hovered ? 1.0 : 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        AppColors.teal.withOpacity(0.35),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -705,29 +963,32 @@ class _UpcomingEventsSection extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'EVENTS',
-                    style: GoogleFonts.spaceMono(
-                      color: AppColors.teal,
-                      fontSize: 12,
-                      letterSpacing: 3,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'EVENTS',
+                      style: GoogleFonts.spaceMono(
+                        color: AppColors.teal,
+                        fontSize: 12,
+                        letterSpacing: 3,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'What\'s coming',
-                    style: GoogleFonts.spaceMono(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.white,
-                      letterSpacing: -2,
+                    const SizedBox(height: 12),
+                    Text(
+                      'What\'s coming',
+                      style: GoogleFonts.spaceMono(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        color: AppColors.white,
+                        letterSpacing: -2,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               TextButton(
                 onPressed: () => context.go('/events'),
@@ -776,102 +1037,100 @@ class _EventRowState extends State<_EventRow> {
             color: _hovered ? AppColors.cardBg : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Row(
-            children: [
-              // Date
-              SizedBox(
-                width: 60,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.event.date.day.toString().padLeft(2, '0'),
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w900,
-                        color: AppColors.teal,
-                      ),
-                    ),
-                    Text(
-                      ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                          [widget.event.date.month - 1]
-                          .toUpperCase(),
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 11,
-                        color: AppColors.textGray,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 32),
-
-              // Divider
-              Container(
-                width: 1,
-                height: 50,
-                color: AppColors.borderColor,
-              ),
-              const SizedBox(width: 32),
-
-              // Content
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.event.title,
-                      style: GoogleFonts.spaceGrotesk(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      widget.event.location,
-                      style: GoogleFonts.inter(
-                        fontSize: 13,
-                        color: AppColors.textGray,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              if (widget.event.isVirtual)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.softBlue.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                      color: AppColors.softBlue.withOpacity(0.3),
-                    ),
-                  ),
-                  child: Text(
-                    'VIRTUAL',
+          child: Builder(builder: (context) {
+            final isWide = MediaQuery.of(context).size.width > 600;
+            final months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            final dateWidget = SizedBox(
+              width: 60,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.event.date.day.toString().padLeft(2, '0'),
                     style: GoogleFonts.spaceMono(
-                      color: AppColors.softBlue,
-                      fontSize: 10,
-                      letterSpacing: 1,
+                      fontSize: 28, fontWeight: FontWeight.w900, color: AppColors.teal),
+                  ),
+                  Text(
+                    months[widget.event.date.month - 1].toUpperCase(),
+                    style: GoogleFonts.spaceMono(
+                      fontSize: 11, color: AppColors.textGray, letterSpacing: 1),
+                  ),
+                ],
+              ),
+            );
+            final contentWidget = Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.event.title,
+                      style: GoogleFonts.spaceGrotesk(
+                          fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.white)),
+                  const SizedBox(height: 4),
+                  Text(widget.event.location,
+                      style: GoogleFonts.inter(fontSize: 13, color: AppColors.textGray)),
+                ],
+              ),
+            );
+            final virtualBadge = widget.event.isVirtual
+                ? Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppColors.softBlue.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(color: AppColors.softBlue.withOpacity(0.3)),
                     ),
+                    child: Text('VIRTUAL',
+                        style: GoogleFonts.spaceMono(
+                            color: AppColors.softBlue, fontSize: 10, letterSpacing: 1)),
+                  )
+                : const SizedBox.shrink();
+
+            final arrowIcon = Icon(
+              Icons.arrow_forward,
+              color: _hovered ? AppColors.teal : AppColors.borderColor,
+              size: 20,
+            );
+
+            if (isWide) {
+              return Row(children: [
+                dateWidget,
+                const SizedBox(width: 32),
+                Container(width: 1, height: 50, color: AppColors.borderColor),
+                const SizedBox(width: 32),
+                contentWidget,
+                virtualBadge,
+                const SizedBox(width: 16),
+                arrowIcon,
+              ]);
+            }
+            // Mobile layout
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                dateWidget,
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.event.title,
+                          style: GoogleFonts.spaceGrotesk(
+                              fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.white)),
+                      const SizedBox(height: 4),
+                      Text(widget.event.location,
+                          style: GoogleFonts.inter(fontSize: 13, color: AppColors.textGray)),
+                      if (widget.event.isVirtual) ...[
+                        const SizedBox(height: 8),
+                        virtualBadge,
+                      ],
+                    ],
                   ),
                 ),
-
-              const SizedBox(width: 16),
-              Icon(
-                Icons.arrow_forward,
-                color: _hovered ? AppColors.teal : AppColors.borderColor,
-                size: 20,
-              ),
-            ],
-          ),
+                const SizedBox(width: 8),
+                arrowIcon,
+              ],
+            );
+          }),
         ),
       ),
     );
@@ -892,29 +1151,32 @@ class _BlogPreviewSection extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'BLOG',
-                    style: GoogleFonts.spaceMono(
-                      color: AppColors.coral,
-                      fontSize: 12,
-                      letterSpacing: 3,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'BLOG',
+                      style: GoogleFonts.spaceMono(
+                        color: AppColors.coral,
+                        fontSize: 12,
+                        letterSpacing: 3,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Latest from us',
-                    style: GoogleFonts.spaceMono(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.white,
-                      letterSpacing: -2,
+                    const SizedBox(height: 12),
+                    Text(
+                      'Latest from us',
+                      style: GoogleFonts.spaceMono(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        color: AppColors.white,
+                        letterSpacing: -2,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               TextButton(
                 onPressed: () => context.go('/blog'),
@@ -1066,8 +1328,10 @@ class _JoinSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            spacing: 16,
+            runSpacing: 12,
+            alignment: WrapAlignment.center,
             children: [
               ElevatedButton(
                 onPressed: () => context.go('/signup'),
@@ -1092,7 +1356,6 @@ class _JoinSection extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 16),
               OutlinedButton(
                 onPressed: () => context.go('/club260/membership'),
                 style: OutlinedButton.styleFrom(

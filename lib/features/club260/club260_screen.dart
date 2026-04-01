@@ -85,6 +85,34 @@ class _Club260Hero extends StatelessWidget {
             ),
           ),
 
+          // Right-side image float (desktop)
+          Builder(builder: (context) {
+            if (MediaQuery.of(context).size.width <= 1100) return const SizedBox.shrink();
+            return Positioned(
+              right: 60,
+              bottom: 80,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  width: 340,
+                  height: 420,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.teal.withOpacity(0.2),
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Image.network(
+                    'https://i.ibb.co/gMT25r9D/6.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(color: AppColors.cardBg),
+                  ),
+                ),
+              ).animate().fadeIn(delay: 300.ms, duration: 800.ms).slideY(begin: 0.1),
+            );
+          }),
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 120),
             child: Column(
@@ -413,87 +441,78 @@ class _FeatureCardState extends State<_FeatureCard> {
 class _NextSessionBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isWide = MediaQuery.of(context).size.width > 600;
     return Container(
-      margin: const EdgeInsets.all(40),
-      padding: const EdgeInsets.all(40),
+      margin: EdgeInsets.all(isWide ? 40 : 20),
+      padding: EdgeInsets.all(isWide ? 40 : 24),
       decoration: BoxDecoration(
         color: AppColors.teal.withOpacity(0.08),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: AppColors.teal.withOpacity(0.3)),
       ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.teal.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const Icon(
-              Icons.video_call_outlined,
-              color: AppColors.teal,
-              size: 32,
-            ),
-          ),
-          const SizedBox(width: 24),
-          Expanded(
-            child: Column(
+      child: isWide
+          ? Row(
+              children: [
+                _sessionIcon(),
+                const SizedBox(width: 24),
+                Expanded(child: _sessionInfo()),
+                const SizedBox(width: 24),
+                _rsvpButton(context),
+              ],
+            )
+          : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'NEXT SESSION',
-                  style: GoogleFonts.spaceMono(
-                    color: AppColors.teal,
-                    fontSize: 11,
-                    letterSpacing: 2,
-                  ),
+                Row(
+                  children: [
+                    _sessionIcon(),
+                    const SizedBox(width: 16),
+                    Expanded(child: _sessionInfo()),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Club260 Monthly Gathering — June 29, 2025',
-                  style: GoogleFonts.spaceGrotesk(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.white,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Featuring a special guest healer & life coach · Virtual · Open to all members',
-                  style: GoogleFonts.inter(
-                    color: AppColors.textGray,
-                    fontSize: 14,
-                  ),
-                ),
+                const SizedBox(height: 20),
+                SizedBox(width: double.infinity, child: _rsvpButton(context)),
               ],
             ),
-          ),
-          const SizedBox(width: 24),
-          ElevatedButton(
-            onPressed: () => context.go('/signup'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.teal,
-              foregroundColor: AppColors.black,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 14,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            child: Text(
-              'RSVP',
-              style: GoogleFonts.spaceGrotesk(
-                fontWeight: FontWeight.w800,
-                letterSpacing: 1,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
+
+  Widget _sessionIcon() => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.teal.withOpacity(0.15),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Icon(Icons.video_call_outlined, color: AppColors.teal, size: 32),
+      );
+
+  Widget _sessionInfo() => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('NEXT SESSION',
+              style: GoogleFonts.spaceMono(
+                  color: AppColors.teal, fontSize: 11, letterSpacing: 2)),
+          const SizedBox(height: 8),
+          Text('Club260 Monthly Gathering — June 29, 2025',
+              style: GoogleFonts.spaceGrotesk(
+                  fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.white)),
+          const SizedBox(height: 4),
+          Text('Featuring a special guest healer & life coach · Virtual · Open to all members',
+              style: GoogleFonts.inter(color: AppColors.textGray, fontSize: 14)),
+        ],
+      );
+
+  Widget _rsvpButton(BuildContext context) => ElevatedButton(
+        onPressed: () => context.go('/signup'),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.teal,
+          foregroundColor: AppColors.black,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        child: Text('RSVP',
+            style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.w800, letterSpacing: 1)),
+      );
 }
 
 class _MembershipPreview extends StatelessWidget {

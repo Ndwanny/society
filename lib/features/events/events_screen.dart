@@ -171,8 +171,8 @@ class _FeaturedEvent extends StatelessWidget {
     final isWide = MediaQuery.of(context).size.width > 768;
 
     return Container(
-      margin: const EdgeInsets.all(40),
-      height: isWide ? 400 : 500,
+      margin: EdgeInsets.all(isWide ? 40 : 16),
+      height: isWide ? 400 : null,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
         gradient: LinearGradient(
@@ -205,7 +205,7 @@ class _FeaturedEvent extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(48),
+            padding: EdgeInsets.all(isWide ? 48 : 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -230,7 +230,7 @@ class _FeaturedEvent extends StatelessWidget {
                 Text(
                   event.title,
                   style: GoogleFonts.spaceMono(
-                    fontSize: 40,
+                    fontSize: isWide ? 40 : 26,
                     fontWeight: FontWeight.w900,
                     color: AppColors.white,
                     letterSpacing: -1,
@@ -249,19 +249,19 @@ class _FeaturedEvent extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 24),
-                Row(
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 12,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     _eventMeta(
                       Icons.calendar_today_outlined,
                       '${event.date.day} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][event.date.month-1]} ${event.date.year}',
                     ),
-                    const SizedBox(width: 24),
                     _eventMeta(
                         Icons.location_on_outlined, event.location),
-                    const SizedBox(width: 24),
                     _eventMeta(Icons.people_outline,
                         '${event.attendees} attending'),
-                    const Spacer(),
                     ElevatedButton(
                       onPressed: () => context.go('/signup'),
                       style: ElevatedButton.styleFrom(

@@ -191,39 +191,40 @@ class _CourseCardState extends State<_CourseCard> {
                 : AppColors.borderColor,
           ),
         ),
-        child: Row(
-          children: [
-            // Thumbnail
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-              ),
-              child: SizedBox(
-                width: 180,
-                child: Image.network(
-                  widget.course.thumbnailUrl ?? '',
-                  height: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
-                    color: AppColors.borderColor,
-                    child: const Icon(
-                      Icons.play_circle_outline,
-                      color: AppColors.textGray,
-                      size: 32,
-                    ),
+        child: Builder(builder: (context) {
+          final isWide = MediaQuery.of(context).size.width > 600;
+          final thumbnail = ClipRRect(
+            borderRadius: isWide
+                ? const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                  )
+                : const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+            child: SizedBox(
+              width: isWide ? 180 : double.infinity,
+              height: isWide ? 140 : 160,
+              child: Image.network(
+                widget.course.thumbnailUrl ?? '',
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  color: AppColors.borderColor,
+                  child: const Icon(
+                    Icons.play_circle_outline,
+                    color: AppColors.textGray,
+                    size: 32,
                   ),
                 ),
               ),
             ),
+          );
 
-            // Content
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
+          final content = Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
                       children: [
@@ -321,10 +322,23 @@ class _CourseCardState extends State<_CourseCard> {
                     ),
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
+          );
+
+          return isWide
+              ? Row(
+                  children: [
+                    thumbnail,
+                    Expanded(child: content),
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    thumbnail,
+                    content,
+                  ],
+                );
+        }),
       ),
     );
   }
