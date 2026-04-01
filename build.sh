@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
 
-# Install Flutter
+# Install Flutter into home directory (writable in Cloudflare Pages)
 FLUTTER_VERSION="3.22.0"
 curl -fsSL "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}-stable.tar.xz" \
-  | tar xJ -C /opt
+  | tar xJ -C "$HOME"
 
-export PATH="/opt/flutter/bin:$PATH"
+export PATH="$HOME/flutter/bin:$PATH"
 
 flutter config --no-analytics
 flutter pub get
