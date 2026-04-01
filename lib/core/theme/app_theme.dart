@@ -77,7 +77,7 @@ class AppTheme {
           letterSpacing: 1.5,
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: const CardTheme(
         color: AppColors.cardBg,
         elevation: 0,
         shape: RoundedRectangleBorder(
