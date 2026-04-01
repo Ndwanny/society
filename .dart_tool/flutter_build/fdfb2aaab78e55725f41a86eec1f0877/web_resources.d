@@ -1,0 +1,1 @@
+ C:\\Users\\HP\\Documents\\dev\\society\\society260\\build\\web\\manifest.json:  C:\\Users\\HP\\Documents\\dev\\society\\society260\\web\\index.html C:\\Users\\HP\\Documents\\dev\\society\\society260\\web\\manifest.json

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub:*)",
+      "Read(//c/Users/HP/AppData/Local/flutter/bin/**)",
+      "Read(//c/flutter/bin/**)",
+      "Bash(/c/flutter/bin/flutter pub:*)",
+      "Bash(/c/flutter/bin/flutter analyze:*)",
+      "Bash(/c/flutter/bin/flutter run:*)",
+      "Bash(taskkill //F //IM dart.exe)",
+      "Bash(taskkill //F //IM flutter.exe)",
+      "Bash(/c/flutter/bin/flutter build:*)"
+    ]
+  }
+}
