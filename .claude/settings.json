@@ -9,7 +9,13 @@
       "Bash(/c/flutter/bin/flutter run:*)",
       "Bash(taskkill //F //IM dart.exe)",
       "Bash(taskkill //F //IM flutter.exe)",
-      "Bash(/c/flutter/bin/flutter build:*)"
+      "Bash(/c/flutter/bin/flutter build:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(/c/Users/HP/flutter/bin/flutter analyze:*)",
+      "Bash(where flutter:*)",
+      "Read(//c/Users/HP/Documents/dev/society/society260/$LOCALAPPDATA/flutter/bin/**)",
+      "Read(//c/Users/HP/**)",
+      "Bash(xargs sed:*)"
     ]
   }
 }

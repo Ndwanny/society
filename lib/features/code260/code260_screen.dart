@@ -171,7 +171,7 @@ class _Code260Hero extends StatelessWidget {
                   ),
                   child: Text(
                     '🌈 BY SOCIETY260',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.code260Primary,
                       fontSize: 11,
                       letterSpacing: 2,
@@ -183,7 +183,7 @@ class _Code260Hero extends StatelessWidget {
 
                 Text(
                   'Code',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: MediaQuery.of(context).size.width > 768
                         ? 96
                         : 60,
@@ -196,7 +196,7 @@ class _Code260Hero extends StatelessWidget {
 
                 Text(
                   '260',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: MediaQuery.of(context).size.width > 768
                         ? 96
                         : 60,
@@ -213,7 +213,7 @@ class _Code260Hero extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 520),
                   child: Text(
                     'Society260\'s children\'s mental wellness program — nurturing young minds through creativity, storytelling, and play.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 17,
                       height: 1.7,
@@ -235,7 +235,7 @@ class _Code260Hero extends StatelessWidget {
                         foregroundColor: AppColors.black,
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24, vertical: 16),
-                        textStyle: GoogleFonts.spaceGrotesk(
+                        textStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -258,7 +258,7 @@ class _Code260Hero extends StatelessWidget {
                       ),
                       child: Text(
                         'WORKSHOPS',
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -340,7 +340,7 @@ class _CharactersSection extends StatelessWidget {
         children: [
           Text(
             '✦ Meet the Crew ✦',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -350,7 +350,7 @@ class _CharactersSection extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Three 13-year-olds navigating the big, big world together.',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 16,
             ),
@@ -454,7 +454,7 @@ class _CharacterFront extends StatelessWidget {
                 child: Center(
                   child: Text(
                     character['name'][0],
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 40,
                       fontWeight: FontWeight.w900,
                       color: color,
@@ -467,7 +467,7 @@ class _CharacterFront extends StatelessWidget {
             Center(
               child: Text(
                 character['name'],
-                style: GoogleFonts.spaceMono(
+                style: GoogleFonts.poppins(
                   fontSize: 32,
                   fontWeight: FontWeight.w900,
                   color: color,
@@ -479,7 +479,7 @@ class _CharacterFront extends StatelessWidget {
             Center(
               child: Text(
                 'Age ${character['age']}',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   color: AppColors.textGray,
                   fontSize: 13,
                 ),
@@ -490,7 +490,7 @@ class _CharacterFront extends StatelessWidget {
               child: Text(
                 character['tagline'],
                 textAlign: TextAlign.center,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   color: AppColors.offWhite,
                   fontSize: 14,
                   fontStyle: FontStyle.italic,
@@ -509,7 +509,7 @@ class _CharacterFront extends StatelessWidget {
                 ),
                 child: Text(
                   'Tap to learn more',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: color,
                     fontSize: 10,
                     letterSpacing: 1,
@@ -548,7 +548,7 @@ class _CharacterBack extends StatelessWidget {
         children: [
           Text(
             character['name'],
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.w900,
               color: color,
@@ -572,7 +572,7 @@ class _CharacterBack extends StatelessWidget {
             ),
             child: Text(
               character['description'],
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 color: AppColors.offWhite,
                 fontSize: 13,
                 height: 1.6,
@@ -583,7 +583,7 @@ class _CharacterBack extends StatelessWidget {
           Center(
             child: Text(
               'Tap to flip back',
-              style: GoogleFonts.spaceMono(
+              style: GoogleFonts.poppins(
                 color: AppColors.textMuted,
                 fontSize: 10,
               ),
@@ -600,7 +600,7 @@ class _CharacterBack extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.spaceMono(
+          style: GoogleFonts.poppins(
             color: color,
             fontSize: 10,
             letterSpacing: 1,
@@ -609,7 +609,7 @@ class _CharacterBack extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           value,
-          style: GoogleFonts.inter(
+          style: GoogleFonts.poppins(
             color: AppColors.textGray,
             fontSize: 13,
             height: 1.5,
@@ -672,7 +672,7 @@ class _ComicSection extends StatelessWidget {
           // Section header
           Text(
             '📚 The Comic Series',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -682,7 +682,7 @@ class _ComicSection extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'An ongoing story of growth, friendship, and emotional discovery.',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 15,
             ),
@@ -714,7 +714,7 @@ class _ComicSection extends StatelessWidget {
                   ),
                   child: Text(
                     'Issue #$issue',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: isSelected
                           ? AppColors.black
                           : AppColors.textGray,
@@ -824,7 +824,7 @@ class _ComicPreview extends StatelessWidget {
                         ),
                         child: Text(
                           'ISSUE #$issue',
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             color: AppColors.code260Primary,
                             fontSize: 11,
                             letterSpacing: 2,
@@ -834,7 +834,7 @@ class _ComicPreview extends StatelessWidget {
                       const SizedBox(height: 24),
                       Text(
                         panel.text,
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           color: AppColors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -858,7 +858,7 @@ class _ComicPreview extends StatelessWidget {
                                 const SizedBox(width: 8),
                                 Text(
                                   'READ NOW',
-                                  style: GoogleFonts.spaceGrotesk(
+                                  style: GoogleFonts.poppins(
                                     color: AppColors.black,
                                     fontWeight: FontWeight.w800,
                                     fontSize: 13,
@@ -958,7 +958,7 @@ class _ComicViewer extends StatelessWidget {
                           children: [
                             Text(
                               'PAGE ${currentPage + 1} OF ${pages.length}',
-                              style: GoogleFonts.spaceMono(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.code260Primary
                                     .withOpacity(0.7),
                                 fontSize: 10,
@@ -976,7 +976,7 @@ class _ComicViewer extends StatelessWidget {
                         const Spacer(),
                         Text(
                           panel.text,
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                             color: AppColors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.w700,
@@ -1078,7 +1078,7 @@ class _Code260Programs extends StatelessWidget {
         children: [
           Text(
             'What Code260 Offers',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -1163,7 +1163,7 @@ class _ProgramTile extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -1172,7 +1172,7 @@ class _ProgramTile extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   description,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 13,
                     height: 1.5,

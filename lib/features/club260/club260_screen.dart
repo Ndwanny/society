@@ -132,7 +132,7 @@ class _Club260Hero extends StatelessWidget {
                   ),
                   child: Text(
                     'BY SOCIETY260',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.teal,
                       fontSize: 11,
                       letterSpacing: 2,
@@ -144,7 +144,7 @@ class _Club260Hero extends StatelessWidget {
 
                 Text(
                   'Club',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: MediaQuery.of(context).size.width > 768 ? 96 : 60,
                     fontWeight: FontWeight.w900,
                     color: AppColors.white,
@@ -155,7 +155,7 @@ class _Club260Hero extends StatelessWidget {
 
                 Text(
                   '260',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: MediaQuery.of(context).size.width > 768 ? 96 : 60,
                     fontWeight: FontWeight.w900,
                     color: AppColors.teal,
@@ -170,7 +170,7 @@ class _Club260Hero extends StatelessWidget {
                   constraints: const BoxConstraints(maxWidth: 520),
                   child: Text(
                     'Society260\'s monthly virtual gathering and online community. Connect, share, grow. A safe space built by and for you.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 17,
                       height: 1.7,
@@ -195,7 +195,7 @@ class _Club260Hero extends StatelessWidget {
                           horizontal: 28,
                           vertical: 16,
                         ),
-                        textStyle: GoogleFonts.spaceGrotesk(
+                        textStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -217,7 +217,7 @@ class _Club260Hero extends StatelessWidget {
                           horizontal: 28,
                           vertical: 16,
                         ),
-                        textStyle: GoogleFonts.spaceGrotesk(
+                        textStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -264,7 +264,7 @@ class _StatBadge extends StatelessWidget {
       children: [
         Text(
           value,
-          style: GoogleFonts.spaceMono(
+          style: GoogleFonts.poppins(
             fontSize: 28,
             fontWeight: FontWeight.w900,
             color: AppColors.teal,
@@ -272,7 +272,7 @@ class _StatBadge extends StatelessWidget {
         ),
         Text(
           label,
-          style: GoogleFonts.inter(
+          style: GoogleFonts.poppins(
             color: AppColors.textGray,
             fontSize: 13,
           ),
@@ -326,7 +326,7 @@ class _Club260Features extends StatelessWidget {
         children: [
           Text(
             'Everything in one place',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -415,7 +415,7 @@ class _FeatureCardState extends State<_FeatureCard> {
               const Spacer(),
               Text(
                 widget.title,
-                style: GoogleFonts.spaceGrotesk(
+                style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: AppColors.white,
@@ -424,7 +424,7 @@ class _FeatureCardState extends State<_FeatureCard> {
               const SizedBox(height: 8),
               Text(
                 widget.description,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   fontSize: 12,
                   color: AppColors.textGray,
                   height: 1.5,
@@ -490,15 +490,15 @@ class _NextSessionBanner extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('NEXT SESSION',
-              style: GoogleFonts.spaceMono(
+              style: GoogleFonts.poppins(
                   color: AppColors.teal, fontSize: 11, letterSpacing: 2)),
           const SizedBox(height: 8),
           Text('Club260 Monthly Gathering — June 29, 2025',
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                   fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.white)),
           const SizedBox(height: 4),
           Text('Featuring a special guest healer & life coach · Virtual · Open to all members',
-              style: GoogleFonts.inter(color: AppColors.textGray, fontSize: 14)),
+              style: GoogleFonts.poppins(color: AppColors.textGray, fontSize: 14)),
         ],
       );
 
@@ -511,7 +511,7 @@ class _NextSessionBanner extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: Text('RSVP',
-            style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.w800, letterSpacing: 1)),
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w800, letterSpacing: 1)),
       );
 }
 
@@ -525,7 +525,7 @@ class _MembershipPreview extends StatelessWidget {
         children: [
           Text(
             'Choose your journey',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 40,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -535,7 +535,7 @@ class _MembershipPreview extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Start free, upgrade when you\'re ready.',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 16,
             ),
@@ -556,7 +556,7 @@ class _MembershipPreview extends StatelessWidget {
             ),
             child: Text(
               'VIEW ALL PLANS',
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w800,
                 letterSpacing: 1.5,
               ),

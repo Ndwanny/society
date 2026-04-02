@@ -81,7 +81,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Messages',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
@@ -122,11 +122,11 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: TextField(
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                                 color: AppColors.white),
                             decoration: InputDecoration(
                               hintText: 'Search messages...',
-                              hintStyle: GoogleFonts.inter(
+                              hintStyle: GoogleFonts.poppins(
                                   color: AppColors.textMuted),
                               prefixIcon: const Icon(
                                   Icons.search,
@@ -187,7 +187,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                                     AppColors.teal.withOpacity(0.2),
                                 child: Text(
                                   _selectedUser!.displayName[0],
-                                  style: GoogleFonts.spaceGrotesk(
+                                  style: GoogleFonts.poppins(
                                       color: AppColors.teal),
                                 ),
                               ),
@@ -198,7 +198,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                                 children: [
                                   Text(
                                     _selectedUser!.displayName,
-                                    style: GoogleFonts.spaceGrotesk(
+                                    style: GoogleFonts.poppins(
                                       color: AppColors.white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14,
@@ -217,7 +217,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                                       const SizedBox(width: 6),
                                       Text(
                                         'Online',
-                                        style: GoogleFonts.inter(
+                                        style: GoogleFonts.poppins(
                                           color: AppColors.textGray,
                                           fontSize: 11,
                                         ),
@@ -314,7 +314,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
                 backgroundColor: AppColors.teal.withOpacity(0.2),
                 child: Text(
                   _selectedUser?.displayName[0] ?? 'U',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: AppColors.teal,
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
@@ -324,7 +324,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
               const SizedBox(height: 16),
               Text(
                 _selectedUser?.displayName ?? 'User',
-                style: GoogleFonts.spaceGrotesk(
+                style: GoogleFonts.poppins(
                   color: AppColors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -333,7 +333,7 @@ class _Club260MessagesScreenState extends State<Club260MessagesScreen> {
               const SizedBox(height: 8),
               Text(
                 isVideo ? 'Video call starting...' : 'Calling...',
-                style: GoogleFonts.inter(color: AppColors.textGray),
+                style: GoogleFonts.poppins(color: AppColors.textGray),
               ),
               const SizedBox(height: 32),
               Row(
@@ -378,7 +378,7 @@ class _ConversationTile extends StatelessWidget {
             backgroundColor: AppColors.teal.withOpacity(0.15),
             child: Text(
               user.displayName[0],
-              style: GoogleFonts.spaceGrotesk(color: AppColors.teal),
+              style: GoogleFonts.poppins(color: AppColors.teal),
             ),
           ),
           Positioned(
@@ -399,7 +399,7 @@ class _ConversationTile extends StatelessWidget {
       ),
       title: Text(
         user.displayName,
-        style: GoogleFonts.spaceGrotesk(
+        style: GoogleFonts.poppins(
           color: AppColors.white,
           fontSize: 13,
           fontWeight: FontWeight.w600,
@@ -407,7 +407,7 @@ class _ConversationTile extends StatelessWidget {
       ),
       subtitle: Text(
         '@${user.username}',
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           color: AppColors.textGray,
           fontSize: 11,
         ),
@@ -440,7 +440,7 @@ class _MessageBubble extends StatelessWidget {
             if (!message.isMine) ...[
               Text(
                 message.senderName,
-                style: GoogleFonts.spaceGrotesk(
+                style: GoogleFonts.poppins(
                   color: AppColors.teal,
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
@@ -471,7 +471,7 @@ class _MessageBubble extends StatelessWidget {
                   ? _AudioMessage(isMine: message.isMine)
                   : Text(
                       message.text ?? '',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         color: message.isMine
                             ? AppColors.black
                             : AppColors.offWhite,
@@ -483,7 +483,7 @@ class _MessageBubble extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               '${message.sentAt.hour}:${message.sentAt.minute.toString().padLeft(2, '0')}',
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 color: AppColors.textMuted,
                 fontSize: 10,
               ),
@@ -525,7 +525,7 @@ class _AudioMessage extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           '0:12',
-          style: GoogleFonts.spaceMono(
+          style: GoogleFonts.poppins(
             color: isMine
                 ? AppColors.black.withOpacity(0.7)
                 : AppColors.textGray,
@@ -621,7 +621,7 @@ class _MessageInput extends StatelessWidget {
                         const SizedBox(width: 8),
                         Text(
                           'Recording...',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.coral,
                             fontSize: 14,
                           ),
@@ -631,14 +631,14 @@ class _MessageInput extends StatelessWidget {
                   )
                 : TextField(
                     controller: controller,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.offWhite,
                       fontSize: 14,
                     ),
                     onSubmitted: onSend,
                     decoration: InputDecoration(
                       hintText: 'Message...',
-                      hintStyle: GoogleFonts.inter(
+                      hintStyle: GoogleFonts.poppins(
                         color: AppColors.textMuted,
                         fontSize: 14,
                       ),

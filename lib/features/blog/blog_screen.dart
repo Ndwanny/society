@@ -69,7 +69,7 @@ class _BlogScreenState extends State<BlogScreen> {
                 children: [
                   Text(
                     'JOURNAL',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.lavender,
                       fontSize: 12,
                       letterSpacing: 3,
@@ -78,7 +78,7 @@ class _BlogScreenState extends State<BlogScreen> {
                   const SizedBox(height: 20),
                   Text(
                     'Words that heal,\ninspire & connect.',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 64,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -89,7 +89,7 @@ class _BlogScreenState extends State<BlogScreen> {
                   const SizedBox(height: 20),
                   Text(
                     'Perspectives on mental health, fashion, creativity, and life\nfrom the Society260 community.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 16,
                       height: 1.7,
@@ -111,7 +111,7 @@ class _BlogScreenState extends State<BlogScreen> {
                 children: [
                   Text(
                     'Filter:',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -232,7 +232,7 @@ class _CategoryChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.spaceGrotesk(
+          style: GoogleFonts.poppins(
             color: isSelected ? AppColors.black : AppColors.textGray,
             fontSize: 13,
             fontWeight:
@@ -298,7 +298,7 @@ class _FeaturedPost extends StatelessWidget {
                     ),
                     child: Text(
                       '✦ FEATURED',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.black,
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
@@ -309,7 +309,7 @@ class _FeaturedPost extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     post.title,
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 32,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -320,7 +320,7 @@ class _FeaturedPost extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     post.excerpt,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: Colors.white70,
                       fontSize: 14,
                     ),
@@ -332,7 +332,7 @@ class _FeaturedPost extends StatelessWidget {
                     children: [
                       Text(
                         '${post.authorName} · ${post.readTime} min read',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: Colors.white60,
                           fontSize: 13,
                         ),
@@ -351,7 +351,7 @@ class _FeaturedPost extends StatelessWidget {
                         ),
                         child: Text(
                           'Read More',
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -444,7 +444,7 @@ class _BlogCardState extends State<_BlogCard> {
                         ),
                         child: Text(
                           widget.post.category.name.toUpperCase(),
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             color: color,
                             fontSize: 9,
                             letterSpacing: 1,
@@ -454,7 +454,7 @@ class _BlogCardState extends State<_BlogCard> {
                       const Spacer(),
                       Text(
                         '${widget.post.readTime} min',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textMuted,
                           fontSize: 11,
                         ),
@@ -464,7 +464,7 @@ class _BlogCardState extends State<_BlogCard> {
                   const SizedBox(height: 12),
                   Text(
                     widget.post.title,
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: AppColors.white,
                       fontSize: widget.large ? 20 : 17,
                       fontWeight: FontWeight.w700,
@@ -476,7 +476,7 @@ class _BlogCardState extends State<_BlogCard> {
                   const SizedBox(height: 8),
                   Text(
                     widget.post.excerpt,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 13,
                       height: 1.6,
@@ -489,7 +489,7 @@ class _BlogCardState extends State<_BlogCard> {
                     children: [
                       Text(
                         widget.post.authorName,
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textGray,
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -503,7 +503,7 @@ class _BlogCardState extends State<_BlogCard> {
                           const SizedBox(width: 4),
                           Text(
                             '${widget.post.views}',
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textMuted,
                               fontSize: 12,
                             ),

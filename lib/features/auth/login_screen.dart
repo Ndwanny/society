@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () => context.go('/'),
                         child: RichText(
                           text: TextSpan(
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               fontSize: 24,
                               fontWeight: FontWeight.w900,
                             ),
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 80),
                       Text(
                         'Welcome\nback.',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                           fontSize: 56,
                           fontWeight: FontWeight.w900,
                           color: AppColors.white,
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 24),
                       Text(
                         'Your safe space is waiting for you.',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textGray,
                           fontSize: 16,
                           height: 1.7,
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () => context.go('/'),
                             child: RichText(
                               text: TextSpan(
-                                style: GoogleFonts.spaceMono(
+                                style: GoogleFonts.poppins(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,
                                 ),
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                         Text(
                           'Sign In',
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             color: AppColors.white,
                             fontSize: 32,
                             fontWeight: FontWeight.w900,
@@ -159,14 +159,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               'New to Society260? ',
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.textGray),
                             ),
                             GestureDetector(
                               onTap: () => context.go('/signup'),
                               child: Text(
                                 'Create an account',
-                                style: GoogleFonts.inter(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.teal,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextField(
                           controller: _emailCtrl,
                           keyboardType: TextInputType.emailAddress,
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                               color: AppColors.white),
                           decoration: _inputDecoration(
                               'you@example.com', Icons.email_outlined),
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextField(
                           controller: _passCtrl,
                           obscureText: _obscure,
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                               color: AppColors.white),
                           decoration: _inputDecoration(
                             '••••••••',
@@ -222,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {},
                             child: Text(
                               'Forgot password?',
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.teal,
                                 fontSize: 13,
                               ),
@@ -256,7 +256,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   )
                                 : Text(
                                     'SIGN IN',
-                                    style: GoogleFonts.spaceGrotesk(
+                                    style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w800,
                                       letterSpacing: 1.5,
                                     ),
@@ -282,7 +282,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () => context.go('/admin'),
                             child: Text(
                               'Go to Admin Panel →',
-                              style: GoogleFonts.spaceGrotesk(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.textGray,
                                 fontSize: 13,
                               ),
@@ -305,7 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return InputDecoration(
       hintText: hint,
       prefixIcon: Icon(icon, color: AppColors.textGray, size: 18),
-      hintStyle: GoogleFonts.inter(
+      hintStyle: GoogleFonts.poppins(
           color: AppColors.textMuted, fontSize: 14),
       filled: true,
       fillColor: AppColors.cardBg,
@@ -422,7 +422,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         onTap: () => context.go('/'),
                         child: RichText(
                           text: TextSpan(
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               fontSize: 24,
                               fontWeight: FontWeight.w900,
                             ),
@@ -442,7 +442,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       const SizedBox(height: 80),
                       Text(
                         'Join the\nmovement.',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                           fontSize: 56,
                           fontWeight: FontWeight.w900,
                           color: AppColors.white,
@@ -453,7 +453,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       const SizedBox(height: 24),
                       Text(
                         '1,200+ members building a safer world together.',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textGray,
                           fontSize: 16,
                           height: 1.7,
@@ -478,7 +478,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       children: [
                         Text(
                           'Create Account',
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             color: AppColors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.w900,
@@ -490,14 +490,14 @@ class _SignupScreenState extends State<SignupScreen> {
                           children: [
                             Text(
                               'Already a member? ',
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.textGray),
                             ),
                             GestureDetector(
                               onTap: () => context.go('/login'),
                               child: Text(
                                 'Sign in',
-                                style: GoogleFonts.inter(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.teal,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -523,7 +523,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         TextField(
                           controller: _passCtrl,
                           obscureText: _obscure,
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                               color: AppColors.white),
                           decoration: _inputDecoration(
                                   '••••••••', Icons.lock_outline)
@@ -556,7 +556,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Expanded(
                               child: Text(
                                 'I agree to the Terms of Service and Privacy Policy',
-                                style: GoogleFonts.inter(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.textGray,
                                   fontSize: 13,
                                 ),
@@ -593,7 +593,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   )
                                 : Text(
                                     'CREATE ACCOUNT',
-                                    style: GoogleFonts.spaceGrotesk(
+                                    style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w800,
                                       letterSpacing: 1.5,
                                     ),
@@ -643,7 +643,7 @@ class _SignupScreenState extends State<SignupScreen> {
       TextEditingController ctrl, String hint, IconData icon) {
     return TextField(
       controller: ctrl,
-      style: GoogleFonts.inter(color: AppColors.white),
+      style: GoogleFonts.poppins(color: AppColors.white),
       decoration: _inputDecoration(hint, icon),
     );
   }
@@ -653,7 +653,7 @@ class _SignupScreenState extends State<SignupScreen> {
       hintText: hint,
       prefixIcon: Icon(icon, color: AppColors.textGray, size: 18),
       hintStyle:
-          GoogleFonts.inter(color: AppColors.textMuted, fontSize: 14),
+          GoogleFonts.poppins(color: AppColors.textMuted, fontSize: 14),
       filled: true,
       fillColor: AppColors.cardBg,
       contentPadding: const EdgeInsets.symmetric(
@@ -716,7 +716,7 @@ class _FormLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.spaceGrotesk(
+      style: GoogleFonts.poppins(
         color: AppColors.textGray,
         fontSize: 12,
         fontWeight: FontWeight.w600,
@@ -739,7 +739,7 @@ class _Divider extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             'or',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
                 color: AppColors.textMuted, fontSize: 13),
           ),
         ),
@@ -794,7 +794,7 @@ class _GoogleButton extends StatelessWidget {
                     child: Center(
                       child: Text(
                         'G',
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.poppins(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF4285F4),
@@ -805,7 +805,7 @@ class _GoogleButton extends StatelessWidget {
                   const SizedBox(width: 12),
                   Text(
                     'Continue with Google',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                       color: AppColors.white,

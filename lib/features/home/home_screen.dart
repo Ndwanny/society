@@ -218,7 +218,7 @@ class _HeroSectionState extends State<_HeroSection> {
                   ),
                   child: Text(
                     '/ A SAFE SPACE IN MOTION',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 11,
                       color: AppColors.teal,
                       letterSpacing: 2,
@@ -232,7 +232,7 @@ class _HeroSectionState extends State<_HeroSection> {
                   constraints: const BoxConstraints(maxWidth: 900),
                   child: Text(
                     'Society\n260',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: size.width > 768 ? 120 : 72,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -251,7 +251,7 @@ class _HeroSectionState extends State<_HeroSection> {
                   constraints: const BoxConstraints(maxWidth: 480),
                   child: Text(
                     'An independent initiative dedicated to fostering actionable mental health awareness. Creating inclusive, safe spaces for self-expression and growth.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
                       color: AppColors.offWhite.withOpacity(0.85),
                       height: 1.7,
@@ -276,7 +276,7 @@ class _HeroSectionState extends State<_HeroSection> {
                       ),
                       child: Text(
                         'JOIN CLUB260',
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -294,7 +294,7 @@ class _HeroSectionState extends State<_HeroSection> {
                       ),
                       child: Text(
                         'EXPLORE CODE260',
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700,
                           letterSpacing: 1,
                           fontSize: 13,
@@ -310,7 +310,7 @@ class _HeroSectionState extends State<_HeroSection> {
                   children: [
                     Text(
                       'Scroll',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.textMuted,
                         fontSize: 11,
                         letterSpacing: 2,
@@ -416,7 +416,7 @@ class _MarqueeSectionState extends State<_MarqueeSection>
                   child: Center(
                     child: Text(
                       _texts[i % _texts.length],
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.black,
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
@@ -459,7 +459,7 @@ class _AboutSection extends StatelessWidget {
                     children: [
                       Text(
                         'ABOUT',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                           color: AppColors.teal,
                           fontSize: 12,
                           letterSpacing: 3,
@@ -468,7 +468,7 @@ class _AboutSection extends StatelessWidget {
                       const SizedBox(height: 24),
                       Text(
                         'A platform for those who think with their hearts.',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                           fontSize: 36,
                           fontWeight: FontWeight.w900,
                           color: headingColor,
@@ -487,7 +487,7 @@ class _AboutSection extends StatelessWidget {
                       const SizedBox(height: 48),
                       Text(
                         'Society 260 stands as an independent communicative initiative driven by a resolute commitment to instigate actionable awareness surrounding mental health.',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: bodyColor,
                           fontSize: 16,
                           height: 1.8,
@@ -496,7 +496,7 @@ class _AboutSection extends StatelessWidget {
                       const SizedBox(height: 24),
                       Text(
                         'At our carefully curated forums, we encourage individuals to show up authentically and foster an inclusive environment where diverse experiences are respected.',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textGray,
                           fontSize: 15,
                           height: 1.8,
@@ -509,7 +509,7 @@ class _AboutSection extends StatelessWidget {
                             color: AppColors.teal, size: 18),
                         label: Text(
                           'Read our story',
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                             color: AppColors.teal,
                             fontWeight: FontWeight.w600,
                           ),
@@ -526,7 +526,7 @@ class _AboutSection extends StatelessWidget {
               children: [
                 Text(
                   'ABOUT',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: AppColors.teal,
                     fontSize: 11,
                     letterSpacing: 3,
@@ -535,7 +535,7 @@ class _AboutSection extends StatelessWidget {
                 const SizedBox(height: 20),
                 Text(
                   'A platform for those who think with their hearts.',
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
                     color: Theme.of(context).brightness == Brightness.dark
@@ -547,7 +547,7 @@ class _AboutSection extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   'Society 260 stands as an independent communicative initiative driven by a resolute commitment to instigate actionable awareness surrounding mental health.',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 15,
                     height: 1.8,
@@ -591,7 +591,7 @@ class _CommunityGallery extends StatelessWidget {
         children: [
           Text(
             'Real moments.',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: isWide ? 52 : 34,
               fontWeight: FontWeight.w900,
               color: Theme.of(context).brightness == Brightness.dark
@@ -604,7 +604,7 @@ class _CommunityGallery extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Community captured.',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.teal,
               fontSize: 15,
               letterSpacing: 1,
@@ -992,7 +992,7 @@ class _ProgramsSection extends StatelessWidget {
         children: [
           Text(
             'PROGRAMS',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               color: AppColors.teal,
               fontSize: 12,
               letterSpacing: 3,
@@ -1001,7 +1001,7 @@ class _ProgramsSection extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             'What we offer',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 48,
               fontWeight: FontWeight.w900,
               color: Theme.of(context).brightness == Brightness.dark
@@ -1138,7 +1138,7 @@ class _ProgramCardState extends State<_ProgramCard> {
                     ),
                     child: Text(
                       widget.tag,
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: widget.color,
                         fontSize: 10,
                         letterSpacing: 1.5,
@@ -1150,7 +1150,7 @@ class _ProgramCardState extends State<_ProgramCard> {
               const SizedBox(height: 24),
               Text(
                 widget.title,
-                style: GoogleFonts.spaceMono(
+                style: GoogleFonts.poppins(
                   fontSize: 28,
                   fontWeight: FontWeight.w900,
                   color: AppColors.white,
@@ -1160,7 +1160,7 @@ class _ProgramCardState extends State<_ProgramCard> {
               const SizedBox(height: 12),
               Text(
                 widget.description,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   color: AppColors.textGray,
                   fontSize: 14,
                   height: 1.6,
@@ -1171,7 +1171,7 @@ class _ProgramCardState extends State<_ProgramCard> {
                 children: [
                   Text(
                     'Explore',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: widget.color,
                       fontWeight: FontWeight.w600,
                       fontSize: 13,
@@ -1213,7 +1213,7 @@ class _UpcomingEventsSection extends StatelessWidget {
                   children: [
                     Text(
                       'EVENTS',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.teal,
                         fontSize: 12,
                         letterSpacing: 3,
@@ -1222,7 +1222,7 @@ class _UpcomingEventsSection extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       'What\'s coming',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         fontSize: 32,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -1238,7 +1238,7 @@ class _UpcomingEventsSection extends StatelessWidget {
                 onPressed: () => context.go('/events'),
                 child: Text(
                   'View all →',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: AppColors.teal,
                     fontWeight: FontWeight.w600,
                   ),
@@ -1291,12 +1291,12 @@ class _EventRowState extends State<_EventRow> {
                 children: [
                   Text(
                     widget.event.date.day.toString().padLeft(2, '0'),
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 28, fontWeight: FontWeight.w900, color: AppColors.teal),
                   ),
                   Text(
                     months[widget.event.date.month - 1].toUpperCase(),
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 11, color: AppColors.textGray, letterSpacing: 1),
                   ),
                 ],
@@ -1307,11 +1307,11 @@ class _EventRowState extends State<_EventRow> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.event.title,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.white)),
                   const SizedBox(height: 4),
                   Text(widget.event.location,
-                      style: GoogleFonts.inter(fontSize: 13, color: AppColors.textGray)),
+                      style: GoogleFonts.poppins(fontSize: 13, color: AppColors.textGray)),
                 ],
               ),
             );
@@ -1324,7 +1324,7 @@ class _EventRowState extends State<_EventRow> {
                       border: Border.all(color: AppColors.softBlue.withOpacity(0.3)),
                     ),
                     child: Text('VIRTUAL',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                             color: AppColors.softBlue, fontSize: 10, letterSpacing: 1)),
                   )
                 : const SizedBox.shrink();
@@ -1358,11 +1358,11 @@ class _EventRowState extends State<_EventRow> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(widget.event.title,
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                               fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.white)),
                       const SizedBox(height: 4),
                       Text(widget.event.location,
-                          style: GoogleFonts.inter(fontSize: 13, color: AppColors.textGray)),
+                          style: GoogleFonts.poppins(fontSize: 13, color: AppColors.textGray)),
                       if (widget.event.isVirtual) ...[
                         const SizedBox(height: 8),
                         virtualBadge,
@@ -1405,7 +1405,7 @@ class _BlogPreviewSection extends StatelessWidget {
                   children: [
                     Text(
                       'BLOG',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.coral,
                         fontSize: 12,
                         letterSpacing: 3,
@@ -1414,7 +1414,7 @@ class _BlogPreviewSection extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       'Latest from us',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         fontSize: 32,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -1430,7 +1430,7 @@ class _BlogPreviewSection extends StatelessWidget {
                 onPressed: () => context.go('/blog'),
                 child: Text(
                   'All posts →',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: AppColors.coral,
                     fontWeight: FontWeight.w600,
                   ),
@@ -1481,7 +1481,7 @@ class _BlogPreviewRowState extends State<_BlogPreviewRow> {
                   children: [
                     Text(
                       widget.post.title,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: _hovered ? AppColors.coral : AppColors.white,
@@ -1490,7 +1490,7 @@ class _BlogPreviewRowState extends State<_BlogPreviewRow> {
                     const SizedBox(height: 8),
                     Text(
                       widget.post.excerpt,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         color: AppColors.textGray,
                         fontSize: 14,
                         height: 1.6,
@@ -1501,7 +1501,7 @@ class _BlogPreviewRowState extends State<_BlogPreviewRow> {
                     const SizedBox(height: 12),
                     Text(
                       '${widget.post.authorName} · ${widget.post.readTime} min read',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         color: AppColors.textMuted,
                         fontSize: 12,
                       ),
@@ -1557,7 +1557,7 @@ class _JoinSection extends StatelessWidget {
           Text(
             'Ready to join the movement?',
             textAlign: TextAlign.center,
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 48,
               fontWeight: FontWeight.w900,
               color: Theme.of(context).brightness == Brightness.dark
@@ -1571,7 +1571,7 @@ class _JoinSection extends StatelessWidget {
           Text(
             'Become part of a community built on empathy, growth, and authentic self-expression.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: Theme.of(context).brightness == Brightness.dark
                   ? AppColors.textGray
                   : LightColors.textGray,
@@ -1601,7 +1601,7 @@ class _JoinSection extends StatelessWidget {
                 ),
                 child: Text(
                   'JOIN FOR FREE',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w800,
                     letterSpacing: 1.5,
                     fontSize: 14,
@@ -1623,7 +1623,7 @@ class _JoinSection extends StatelessWidget {
                 ),
                 child: Text(
                   'VIEW PLANS',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,
                     fontSize: 14,

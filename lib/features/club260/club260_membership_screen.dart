@@ -46,7 +46,7 @@ class _Club260MembershipScreenState
                 children: [
                   Text(
                     'MEMBERSHIP',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.teal,
                       fontSize: 12,
                       letterSpacing: 3,
@@ -56,7 +56,7 @@ class _Club260MembershipScreenState
                   Text(
                     'Choose your\njourney',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 56,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -68,7 +68,7 @@ class _Club260MembershipScreenState
                   Text(
                     'Join a community of 1,200+ members committed to mental wellness, authentic self-expression, and collective growth.',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 16,
                       height: 1.7,
@@ -238,7 +238,7 @@ class _Club260MembershipScreenState
         ),
         child: Text(
           label,
-          style: GoogleFonts.spaceGrotesk(
+          style: GoogleFonts.poppins(
             color: isActive ? AppColors.black : AppColors.textGray,
             fontSize: 13,
             fontWeight: FontWeight.w600,
@@ -298,7 +298,7 @@ class _PlanCard extends StatelessWidget {
               child: Text(
                 '✦ MOST POPULAR',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.spaceMono(
+                style: GoogleFonts.poppins(
                   color: AppColors.black,
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -320,7 +320,7 @@ class _PlanCard extends StatelessWidget {
                   ),
                   child: Text(
                     name.toUpperCase(),
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: color,
                       fontSize: 11,
                       letterSpacing: 1.5,
@@ -330,7 +330,7 @@ class _PlanCard extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   price,
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: 40,
                     fontWeight: FontWeight.w900,
                     color: AppColors.white,
@@ -339,7 +339,7 @@ class _PlanCard extends StatelessWidget {
                 ),
                 Text(
                   priceSubtitle,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 13,
                   ),
@@ -356,7 +356,7 @@ class _PlanCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               f,
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.offWhite,
                                 fontSize: 14,
                                 height: 1.4,
@@ -384,7 +384,7 @@ class _PlanCard extends StatelessWidget {
                           ),
                           child: Text(
                             ctaLabel,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w800,
                               fontSize: 14,
                             ),
@@ -405,7 +405,7 @@ class _PlanCard extends StatelessWidget {
                           ),
                           child: Text(
                             ctaLabel,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w700,
                               fontSize: 14,
                             ),
@@ -454,7 +454,7 @@ class _FAQSection extends StatelessWidget {
         children: [
           Text(
             'Frequently Asked Questions',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               fontSize: 32,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
@@ -513,7 +513,7 @@ class _FAQItemState extends State<_FAQItem> {
                   Expanded(
                     child: Text(
                       widget.question,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         color: AppColors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -536,7 +536,7 @@ class _FAQItemState extends State<_FAQItem> {
                   const EdgeInsets.only(bottom: 20, left: 8, right: 8),
               child: Text(
                 widget.answer,
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   color: AppColors.textGray,
                   fontSize: 15,
                   height: 1.7,

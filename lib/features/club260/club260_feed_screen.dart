@@ -118,7 +118,7 @@ class _LeftSidebar extends StatelessWidget {
                 children: [
                   RichText(
                     text: TextSpan(
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w900,
                       ),
@@ -185,7 +185,7 @@ class _LeftSidebar extends StatelessWidget {
                         children: [
                           Text(
                             'Guest User',
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
@@ -193,7 +193,7 @@ class _LeftSidebar extends StatelessWidget {
                           ),
                           Text(
                             'Free Plan',
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 11,
                             ),
@@ -212,7 +212,7 @@ class _LeftSidebar extends StatelessWidget {
                         backgroundColor: AppColors.teal,
                         foregroundColor: AppColors.black,
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        textStyle: GoogleFonts.spaceGrotesk(
+                        textStyle: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                         ),
@@ -258,7 +258,7 @@ class _LeftSidebar extends StatelessWidget {
               const SizedBox(width: 12),
               Text(
                 label,
-                style: GoogleFonts.spaceGrotesk(
+                style: GoogleFonts.poppins(
                   color: isActive ? AppColors.teal : AppColors.textGray,
                   fontSize: 14,
                   fontWeight:
@@ -292,7 +292,7 @@ class _RightSidebar extends StatelessWidget {
             // Trending tags
             Text(
               'Trending',
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                 color: AppColors.white,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
@@ -327,7 +327,7 @@ class _RightSidebar extends StatelessWidget {
                           ),
                           child: Text(
                             tag,
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.teal,
                               fontSize: 12,
                             ),
@@ -344,7 +344,7 @@ class _RightSidebar extends StatelessWidget {
             // Suggested users
             Text(
               'People to follow',
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                 color: AppColors.white,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
@@ -373,7 +373,7 @@ class _RightSidebar extends StatelessWidget {
                 children: [
                   Text(
                     'NEXT SESSION',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.teal,
                       fontSize: 10,
                       letterSpacing: 2,
@@ -382,7 +382,7 @@ class _RightSidebar extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     'June 29, 2025\nClub260 Monthly Gathering',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: AppColors.white,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -400,7 +400,7 @@ class _RightSidebar extends StatelessWidget {
                         padding:
                             const EdgeInsets.symmetric(vertical: 10),
                         textStyle:
-                            GoogleFonts.spaceGrotesk(fontSize: 12),
+                            GoogleFonts.poppins(fontSize: 12),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -433,7 +433,7 @@ class _UserSuggestion extends StatelessWidget {
             backgroundColor: AppColors.teal.withOpacity(0.15),
             child: Text(
               user.displayName[0],
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                 color: AppColors.teal,
                 fontWeight: FontWeight.w700,
               ),
@@ -446,7 +446,7 @@ class _UserSuggestion extends StatelessWidget {
               children: [
                 Text(
                   user.displayName,
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -454,7 +454,7 @@ class _UserSuggestion extends StatelessWidget {
                 ),
                 Text(
                   '@${user.username}',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 11,
                   ),
@@ -471,7 +471,7 @@ class _UserSuggestion extends StatelessWidget {
             ),
             child: Text(
               'Follow',
-              style: GoogleFonts.spaceGrotesk(fontSize: 12),
+              style: GoogleFonts.poppins(fontSize: 12),
             ),
           ),
         ],
@@ -502,7 +502,7 @@ class _FeedHeader extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             'Club260 Feed',
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontSize: 18,
               fontWeight: FontWeight.w900,
@@ -518,7 +518,7 @@ class _FeedHeader extends StatelessWidget {
               foregroundColor: AppColors.black,
               padding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              textStyle: GoogleFonts.spaceGrotesk(
+              textStyle: GoogleFonts.poppins(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
               ),
@@ -558,7 +558,7 @@ class _CreatePostWidget extends StatelessWidget {
         children: [
           Text(
             'What\'s on your mind?',
-            style: GoogleFonts.spaceGrotesk(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontWeight: FontWeight.w600,
               fontSize: 15,
@@ -568,11 +568,11 @@ class _CreatePostWidget extends StatelessWidget {
           TextField(
             controller: controller,
             maxLines: 4,
-            style: GoogleFonts.inter(color: AppColors.offWhite, fontSize: 15),
+            style: GoogleFonts.poppins(color: AppColors.offWhite, fontSize: 15),
             decoration: InputDecoration(
               hintText:
                   'Share something with the community...',
-              hintStyle: GoogleFonts.inter(
+              hintStyle: GoogleFonts.poppins(
                 color: AppColors.textMuted,
                 fontSize: 15,
               ),
@@ -608,7 +608,7 @@ class _CreatePostWidget extends StatelessWidget {
                 ),
                 child: Text(
                   'POST',
-                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.w800),
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
                 ),
               ),
             ],
@@ -631,7 +631,7 @@ class _CreatePostWidget extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             label,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 12,
             ),
@@ -696,7 +696,7 @@ class _PostCardState extends State<PostCard> {
                   const SizedBox(width: 6),
                   Text(
                     'Pinned Post',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: AppColors.black,
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
@@ -719,7 +719,7 @@ class _PostCardState extends State<PostCard> {
                       backgroundColor: AppColors.teal.withOpacity(0.15),
                       child: Text(
                         widget.post.authorName[0],
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           color: AppColors.teal,
                           fontWeight: FontWeight.w700,
                         ),
@@ -731,7 +731,7 @@ class _PostCardState extends State<PostCard> {
                       children: [
                         Text(
                           widget.post.authorName,
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                             color: AppColors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -739,7 +739,7 @@ class _PostCardState extends State<PostCard> {
                         ),
                         Text(
                           timeago.format(widget.post.createdAt),
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.textGray,
                             fontSize: 12,
                           ),
@@ -758,7 +758,7 @@ class _PostCardState extends State<PostCard> {
                 if (widget.post.textContent != null)
                   Text(
                     widget.post.textContent!,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.offWhite,
                       fontSize: 15,
                       height: 1.7,
@@ -800,7 +800,7 @@ class _PostCardState extends State<PostCard> {
                     children: widget.post.tags
                         .map((tag) => Text(
                               '#$tag',
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.teal,
                                 fontSize: 13,
                               ),
@@ -860,13 +860,13 @@ class _PostCardState extends State<PostCard> {
                   const Divider(color: AppColors.borderColor),
                   const SizedBox(height: 12),
                   TextField(
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.offWhite,
                       fontSize: 14,
                     ),
                     decoration: InputDecoration(
                       hintText: 'Write a comment...',
-                      hintStyle: GoogleFonts.inter(
+                      hintStyle: GoogleFonts.poppins(
                         color: AppColors.textMuted,
                         fontSize: 14,
                       ),
@@ -940,7 +940,7 @@ class _ActionButtonState extends State<_ActionButton> {
                 const SizedBox(width: 6),
                 Text(
                   widget.label,
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: widget.color ?? AppColors.textGray,
                     fontSize: 13,
                   ),

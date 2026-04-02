@@ -34,7 +34,7 @@ class AppFooter extends StatelessWidget {
                     children: [
                       RichText(
                         text: TextSpan(
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             fontSize: 24,
                             fontWeight: FontWeight.w900,
                           ),
@@ -54,7 +54,7 @@ class AppFooter extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         'An independent initiative to raise\nawareness for mental health.',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textGray,
                           fontSize: 14,
                           height: 1.7,
@@ -63,7 +63,7 @@ class AppFooter extends StatelessWidget {
                       const SizedBox(height: 20),
                       Text(
                         'Kabulonga Road 2A\nLusaka, Zambia',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textMuted,
                           fontSize: 13,
                           height: 1.7,
@@ -72,7 +72,7 @@ class AppFooter extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         'society260@info.com',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.teal,
                           fontSize: 13,
                         ),
@@ -133,7 +133,7 @@ class AppFooter extends StatelessWidget {
               children: [
                 RichText(
                   text: TextSpan(
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w900,
                     ),
@@ -152,12 +152,12 @@ class AppFooter extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text(
                   'A safe space in motion.',
-                  style: GoogleFonts.inter(color: AppColors.textGray),
+                  style: GoogleFonts.poppins(color: AppColors.textGray),
                 ),
                 const SizedBox(height: 24),
                 Text(
                   'society260@info.com',
-                  style: GoogleFonts.inter(color: AppColors.teal, fontSize: 13),
+                  style: GoogleFonts.poppins(color: AppColors.teal, fontSize: 13),
                 ),
               ],
             ),
@@ -171,14 +171,14 @@ class AppFooter extends StatelessWidget {
             children: [
               Text(
                 '© 2025 Society260. All rights reserved.',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   color: AppColors.textMuted,
                   fontSize: 12,
                 ),
               ),
               Text(
                 'A safe space in motion / Always',
-                style: GoogleFonts.spaceMono(
+                style: GoogleFonts.poppins(
                   color: AppColors.textMuted,
                   fontSize: 11,
                   letterSpacing: 0.5,
@@ -201,7 +201,7 @@ class AppFooter extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GoogleFonts.spaceGrotesk(
+          style: GoogleFonts.poppins(
             color: AppColors.white,
             fontSize: 14,
             fontWeight: FontWeight.w700,
@@ -218,7 +218,7 @@ class AppFooter extends StatelessWidget {
                 cursor: SystemMouseCursors.click,
                 child: Text(
                   link.$1,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 14,
                   ),

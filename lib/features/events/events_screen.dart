@@ -90,7 +90,7 @@ class _EventsScreenState extends State<EventsScreen>
                 children: [
                   Text(
                     'EVENTS',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.coral,
                       fontSize: 12,
                       letterSpacing: 3,
@@ -99,7 +99,7 @@ class _EventsScreenState extends State<EventsScreen>
                   const SizedBox(height: 20),
                   Text(
                     'Where community\ncomes alive.',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 64,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -110,7 +110,7 @@ class _EventsScreenState extends State<EventsScreen>
                   const SizedBox(height: 20),
                   Text(
                     'Poetry. Music. Workshops. Panel discussions.\nAll rooted in mental wellness and self-expression.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 16,
                       height: 1.7,
@@ -129,7 +129,7 @@ class _EventsScreenState extends State<EventsScreen>
               color: AppColors.darkGray,
               child: TabBar(
                 controller: _tabController,
-                labelStyle: GoogleFonts.spaceGrotesk(
+                labelStyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                 ),
@@ -218,7 +218,7 @@ class _FeaturedEvent extends StatelessWidget {
                   ),
                   child: Text(
                     '✦ FEATURED EVENT',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.black,
                       fontSize: 10,
                       fontWeight: FontWeight.w700,
@@ -229,7 +229,7 @@ class _FeaturedEvent extends StatelessWidget {
                 const Spacer(),
                 Text(
                   event.title,
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     fontSize: isWide ? 40 : 26,
                     fontWeight: FontWeight.w900,
                     color: AppColors.white,
@@ -240,7 +240,7 @@ class _FeaturedEvent extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text(
                   event.description,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 15,
                     height: 1.6,
@@ -275,7 +275,7 @@ class _FeaturedEvent extends StatelessWidget {
                       ),
                       child: Text(
                         'GET TICKETS',
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           letterSpacing: 1,
                         ),
@@ -298,7 +298,7 @@ class _FeaturedEvent extends StatelessWidget {
         const SizedBox(width: 6),
         Text(
           text,
-          style: GoogleFonts.inter(
+          style: GoogleFonts.poppins(
             color: AppColors.textGray,
             fontSize: 13,
           ),
@@ -404,7 +404,7 @@ class _EventCardState extends State<_EventCard> {
                           child: Center(
                             child: Text(
                               'PAST EVENT',
-                              style: GoogleFonts.spaceMono(
+                              style: GoogleFonts.poppins(
                                 color: Colors.white54,
                                 fontSize: 12,
                                 letterSpacing: 2,
@@ -429,7 +429,7 @@ class _EventCardState extends State<_EventCard> {
                                 widget.event.date.day
                                     .toString()
                                     .padLeft(2, '0'),
-                                style: GoogleFonts.spaceMono(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.coral,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,
@@ -437,7 +437,7 @@ class _EventCardState extends State<_EventCard> {
                               ),
                               Text(
                                 months[widget.event.date.month - 1],
-                                style: GoogleFonts.spaceMono(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.textGray,
                                   fontSize: 10,
                                   letterSpacing: 1,
@@ -471,7 +471,7 @@ class _EventCardState extends State<_EventCard> {
                             ),
                             child: Text(
                               'VIRTUAL',
-                              style: GoogleFonts.spaceMono(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.softBlue,
                                 fontSize: 9,
                                 letterSpacing: 1,
@@ -483,7 +483,7 @@ class _EventCardState extends State<_EventCard> {
                     const SizedBox(height: 10),
                     Text(
                       widget.event.title,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         color: AppColors.white,
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
@@ -500,7 +500,7 @@ class _EventCardState extends State<_EventCard> {
                         const SizedBox(width: 4),
                         Text(
                           widget.event.location,
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.textGray,
                             fontSize: 12,
                           ),
@@ -511,7 +511,7 @@ class _EventCardState extends State<_EventCard> {
                         const SizedBox(width: 4),
                         Text(
                           '${widget.event.attendees}',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.textGray,
                             fontSize: 12,
                           ),
@@ -546,7 +546,7 @@ class _EventCardState extends State<_EventCard> {
       ),
       child: Text(
         label,
-        style: GoogleFonts.spaceMono(
+        style: GoogleFonts.poppins(
           color: color,
           fontSize: 9,
           letterSpacing: 1,
@@ -588,7 +588,7 @@ class _EventCardState extends State<_EventCard> {
                 const SizedBox(height: 24),
                 Text(
                   widget.event.title,
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
@@ -598,7 +598,7 @@ class _EventCardState extends State<_EventCard> {
                 const SizedBox(height: 16),
                 Text(
                   widget.event.description,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     color: AppColors.textGray,
                     fontSize: 15,
                     height: 1.7,
@@ -623,7 +623,7 @@ class _EventCardState extends State<_EventCard> {
                       ),
                       child: Text(
                         'REGISTER / GET TICKETS',
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           letterSpacing: 1,
                         ),

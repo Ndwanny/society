@@ -49,7 +49,7 @@ class _AdminScreenState extends State<AdminScreen> {
                   child: isWide
                       ? RichText(
                           text: TextSpan(
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
                             ),
@@ -161,7 +161,7 @@ class _SidebarItem extends StatelessWidget {
                     const SizedBox(width: 12),
                     Text(
                       tab.label,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         color: isSelected
                             ? AppColors.teal
                             : AppColors.textGray,
@@ -205,7 +205,7 @@ class _OverviewTab extends StatelessWidget {
                 children: [
                   Text(
                     'Dashboard',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       color: AppColors.white,
                       fontSize: 28,
                       fontWeight: FontWeight.w900,
@@ -213,7 +213,7 @@ class _OverviewTab extends StatelessWidget {
                   ),
                   Text(
                     'Society260 Admin Panel',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 14,
                     ),
@@ -243,7 +243,7 @@ class _OverviewTab extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       'System Online',
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         color: AppColors.teal,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -373,7 +373,7 @@ class _StatCard extends StatelessWidget {
                 ),
                 child: Text(
                   change,
-                  style: GoogleFonts.spaceMono(
+                  style: GoogleFonts.poppins(
                     color: AppColors.success,
                     fontSize: 10,
                   ),
@@ -384,7 +384,7 @@ class _StatCard extends StatelessWidget {
           const Spacer(),
           Text(
             value,
-            style: GoogleFonts.spaceMono(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontSize: 20,
               fontWeight: FontWeight.w900,
@@ -392,7 +392,7 @@ class _StatCard extends StatelessWidget {
           ),
           Text(
             label,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 12,
             ),
@@ -418,7 +418,7 @@ class _UserGrowthChart extends StatelessWidget {
         children: [
           Text(
             'User Growth',
-            style: GoogleFonts.spaceGrotesk(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontWeight: FontWeight.w700,
               fontSize: 16,
@@ -427,7 +427,7 @@ class _UserGrowthChart extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             'Last 6 months',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 12,
             ),
@@ -452,7 +452,7 @@ class _UserGrowthChart extends StatelessWidget {
                       reservedSize: 40,
                       getTitlesWidget: (value, meta) => Text(
                         '${value.toInt()}',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           color: AppColors.textMuted,
                           fontSize: 10,
                         ),
@@ -471,7 +471,7 @@ class _UserGrowthChart extends StatelessWidget {
                           return const SizedBox();
                         return Text(
                           months[idx],
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.textMuted,
                             fontSize: 10,
                           ),
@@ -529,7 +529,7 @@ class _MembershipChart extends StatelessWidget {
         children: [
           Text(
             'Membership',
-            style: GoogleFonts.spaceGrotesk(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontWeight: FontWeight.w700,
               fontSize: 16,
@@ -538,7 +538,7 @@ class _MembershipChart extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             'Distribution',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               color: AppColors.textGray,
               fontSize: 12,
             ),
@@ -553,7 +553,7 @@ class _MembershipChart extends StatelessWidget {
                     color: AppColors.textGray,
                     value: 858,
                     title: 'Free\n69%',
-                    titleStyle: GoogleFonts.spaceMono(
+                    titleStyle: GoogleFonts.poppins(
                       color: AppColors.white,
                       fontSize: 10,
                     ),
@@ -563,7 +563,7 @@ class _MembershipChart extends StatelessWidget {
                     color: AppColors.teal,
                     value: 267,
                     title: 'Member\n21%',
-                    titleStyle: GoogleFonts.spaceMono(
+                    titleStyle: GoogleFonts.poppins(
                       color: AppColors.black,
                       fontSize: 10,
                     ),
@@ -573,7 +573,7 @@ class _MembershipChart extends StatelessWidget {
                     color: AppColors.gold,
                     value: 122,
                     title: 'Advocate\n10%',
-                    titleStyle: GoogleFonts.spaceMono(
+                    titleStyle: GoogleFonts.poppins(
                       color: AppColors.black,
                       fontSize: 10,
                     ),
@@ -609,7 +609,7 @@ class _RecentActivityTable extends StatelessWidget {
               children: [
                 Text(
                   'Recent Activity',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     color: AppColors.white,
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
@@ -620,7 +620,7 @@ class _RecentActivityTable extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     'View all',
-                    style: GoogleFonts.spaceGrotesk(
+                    style: GoogleFonts.poppins(
                       color: AppColors.teal,
                       fontSize: 12,
                     ),
@@ -644,7 +644,7 @@ class _RecentActivityTable extends StatelessWidget {
                       backgroundColor: AppColors.teal.withOpacity(0.15),
                       child: Text(
                         post.authorName[0],
-                        style: GoogleFonts.spaceGrotesk(
+                        style: GoogleFonts.poppins(
                           color: AppColors.teal,
                           fontSize: 12,
                         ),
@@ -657,7 +657,7 @@ class _RecentActivityTable extends StatelessWidget {
                         children: [
                           Text(
                             post.authorName,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
@@ -667,7 +667,7 @@ class _RecentActivityTable extends StatelessWidget {
                             (post.textContent ?? '').length > 60
                                 ? '${(post.textContent ?? '').substring(0, 60)}...'
                                 : (post.textContent ?? ''),
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 12,
                             ),
@@ -688,7 +688,7 @@ class _RecentActivityTable extends StatelessWidget {
                           ),
                           child: Text(
                             post.type.name.toUpperCase(),
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               color: AppColors.teal,
                               fontSize: 9,
                               letterSpacing: 0.5,
@@ -698,7 +698,7 @@ class _RecentActivityTable extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           '${post.likes} likes',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: AppColors.textMuted,
                             fontSize: 11,
                           ),
@@ -730,14 +730,14 @@ class _UsersTab extends StatelessWidget {
             children: [
               Expanded(
                 child: TextField(
-                  style: GoogleFonts.inter(color: AppColors.white),
+                  style: GoogleFonts.poppins(color: AppColors.white),
                   decoration: InputDecoration(
                     hintText: 'Search users...',
                     prefixIcon: const Icon(Icons.search,
                         color: AppColors.textGray, size: 18),
                     filled: true,
                     fillColor: AppColors.cardBg,
-                    hintStyle: GoogleFonts.inter(
+                    hintStyle: GoogleFonts.poppins(
                         color: AppColors.textMuted),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -824,7 +824,7 @@ class _UsersTab extends StatelessWidget {
                                       AppColors.teal.withOpacity(0.15),
                                   child: Text(
                                     user.displayName[0],
-                                    style: GoogleFonts.spaceGrotesk(
+                                    style: GoogleFonts.poppins(
                                         color: AppColors.teal),
                                   ),
                                 ),
@@ -835,7 +835,7 @@ class _UsersTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       user.displayName,
-                                      style: GoogleFonts.spaceGrotesk(
+                                      style: GoogleFonts.poppins(
                                         color: AppColors.white,
                                         fontSize: 13,
                                         fontWeight: FontWeight.w600,
@@ -843,7 +843,7 @@ class _UsersTab extends StatelessWidget {
                                     ),
                                     Text(
                                       '@${user.username}',
-                                      style: GoogleFonts.inter(
+                                      style: GoogleFonts.poppins(
                                         color: AppColors.textGray,
                                         fontSize: 11,
                                       ),
@@ -857,7 +857,7 @@ class _UsersTab extends StatelessWidget {
                             flex: 2,
                             child: Text(
                               user.email,
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.textGray,
                                 fontSize: 13,
                               ),
@@ -869,7 +869,7 @@ class _UsersTab extends StatelessWidget {
                           Expanded(
                             child: Text(
                               '${user.joinedAt.day}/${user.joinedAt.month}/${user.joinedAt.year}',
-                              style: GoogleFonts.inter(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.textGray,
                                 fontSize: 12,
                               ),
@@ -914,7 +914,7 @@ class _UsersTab extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.spaceMono(
+        style: GoogleFonts.poppins(
           color: color,
           fontSize: 9,
           letterSpacing: 0.5,
@@ -951,7 +951,7 @@ class _PostsTab extends StatelessWidget {
                         children: [
                           Text(
                             post.authorName,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.teal,
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
@@ -962,7 +962,7 @@ class _PostsTab extends StatelessWidget {
                             (post.textContent ?? '').length > 80
                                 ? '${(post.textContent ?? '').substring(0, 80)}...'
                                 : (post.textContent ?? ''),
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.offWhite,
                               fontSize: 13,
                             ),
@@ -1005,7 +1005,7 @@ class _PostsTab extends StatelessWidget {
   Widget _metaText(String text) {
     return Text(
       text,
-      style: GoogleFonts.spaceMono(
+      style: GoogleFonts.poppins(
         color: AppColors.textMuted,
         fontSize: 10,
       ),
@@ -1062,7 +1062,7 @@ class _EventsTab extends StatelessWidget {
                         children: [
                           Text(
                             event.date.day.toString(),
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               color: AppColors.coral,
                               fontSize: 18,
                               fontWeight: FontWeight.w900,
@@ -1070,7 +1070,7 @@ class _EventsTab extends StatelessWidget {
                           ),
                           Text(
                             ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][event.date.month-1],
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 9,
                             ),
@@ -1085,7 +1085,7 @@ class _EventsTab extends StatelessWidget {
                         children: [
                           Text(
                             event.title,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
@@ -1093,7 +1093,7 @@ class _EventsTab extends StatelessWidget {
                           ),
                           Text(
                             '${event.location} · ${event.attendees} attending',
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 12,
                             ),
@@ -1112,7 +1112,7 @@ class _EventsTab extends StatelessWidget {
                       ),
                       child: Text(
                         event.isPast ? 'PAST' : 'UPCOMING',
-                        style: GoogleFonts.spaceMono(
+                        style: GoogleFonts.poppins(
                           color: event.isPast
                               ? AppColors.textMuted
                               : AppColors.success,
@@ -1183,7 +1183,7 @@ class _BlogTab extends StatelessWidget {
                         children: [
                           Text(
                             post.title,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
@@ -1192,7 +1192,7 @@ class _BlogTab extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             '${post.authorName} · ${post.readTime} min · ${post.views} views',
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 12,
                             ),
@@ -1263,7 +1263,7 @@ class _CoursesTab extends StatelessWidget {
                         children: [
                           Text(
                             course.title,
-                            style: GoogleFonts.spaceGrotesk(
+                            style: GoogleFonts.poppins(
                               color: AppColors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
@@ -1271,7 +1271,7 @@ class _CoursesTab extends StatelessWidget {
                           ),
                           Text(
                             '${course.instructor} · ${course.lessons} lessons · ${course.enrolled} enrolled',
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: AppColors.textGray,
                               fontSize: 12,
                             ),
@@ -1285,7 +1285,7 @@ class _CoursesTab extends StatelessWidget {
                         const SizedBox(width: 4),
                         Text(
                           course.rating.toString(),
-                          style: GoogleFonts.spaceMono(
+                          style: GoogleFonts.poppins(
                             color: AppColors.gold,
                             fontSize: 12,
                           ),
@@ -1359,7 +1359,7 @@ class _SettingsSection extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.spaceGrotesk(
+            style: GoogleFonts.poppins(
               color: AppColors.white,
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1373,7 +1373,7 @@ class _SettingsSection extends StatelessWidget {
                   children: [
                     Text(
                       item.label,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         color: AppColors.textGray,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -1382,7 +1382,7 @@ class _SettingsSection extends StatelessWidget {
                     const SizedBox(height: 8),
                     TextField(
                       controller: item.controller,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                           color: AppColors.white),
                       decoration: InputDecoration(
                         filled: true,
@@ -1419,7 +1419,7 @@ class _SettingsSection extends StatelessWidget {
             ),
             child: Text(
               'Save Changes',
-              style: GoogleFonts.spaceGrotesk(
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -1444,7 +1444,7 @@ Widget _tabHeader(String title, String subtitle) {
     children: [
       Text(
         title,
-        style: GoogleFonts.spaceMono(
+        style: GoogleFonts.poppins(
           color: AppColors.white,
           fontSize: 24,
           fontWeight: FontWeight.w900,
@@ -1452,7 +1452,7 @@ Widget _tabHeader(String title, String subtitle) {
       ),
       Text(
         subtitle,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           color: AppColors.textGray,
           fontSize: 13,
         ),
@@ -1464,7 +1464,7 @@ Widget _tabHeader(String title, String subtitle) {
 Widget _tableHeader(String label) {
   return Text(
     label,
-    style: GoogleFonts.spaceGrotesk(
+    style: GoogleFonts.poppins(
       color: AppColors.textGray,
       fontSize: 11,
       fontWeight: FontWeight.w700,

@@ -65,7 +65,7 @@ class _AppNavbarState extends State<AppNavbar> {
                 cursor: SystemMouseCursors.click,
                 child: RichText(
                   text: TextSpan(
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,
                       letterSpacing: -1,
@@ -122,7 +122,7 @@ class _AppNavbarState extends State<AppNavbar> {
                         ),
                         child: Text(
                           item.label,
-                          style: GoogleFonts.spaceGrotesk(
+                          style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: isActive
                                 ? FontWeight.w700
@@ -161,7 +161,7 @@ class _AppNavbarState extends State<AppNavbar> {
                 ),
                 child: Text(
                   'Log In',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                     color: textColor,
@@ -185,7 +185,7 @@ class _AppNavbarState extends State<AppNavbar> {
                 ),
                 child: Text(
                   'Join',
-                  style: GoogleFonts.spaceGrotesk(
+                  style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
                   ),
@@ -298,7 +298,7 @@ class AppDrawer extends StatelessWidget {
               children: [
                 RichText(
                   text: TextSpan(
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 22,
                       fontWeight: FontWeight.w900,
                     ),
@@ -343,7 +343,7 @@ class AppDrawer extends StatelessWidget {
     return ListTile(
       title: Text(
         label,
-        style: GoogleFonts.spaceGrotesk(
+        style: GoogleFonts.poppins(
           color: textColor,
           fontWeight: FontWeight.w500,
         ),

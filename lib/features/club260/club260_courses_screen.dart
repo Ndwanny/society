@@ -40,7 +40,7 @@ class Club260CoursesScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'MEMBER EXCLUSIVE',
-                      style: GoogleFonts.spaceMono(
+                      style: GoogleFonts.poppins(
                         color: AppColors.lavender,
                         fontSize: 11,
                         letterSpacing: 2,
@@ -50,7 +50,7 @@ class Club260CoursesScreen extends StatelessWidget {
                   const SizedBox(height: 24),
                   Text(
                     'Online Courses',
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 56,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -60,7 +60,7 @@ class Club260CoursesScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     'Evidence-based courses on mental wellness, emotional intelligence,\nand personal growth — taught by trusted practitioners.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 16,
                       height: 1.7,
@@ -115,7 +115,7 @@ class Club260CoursesScreen extends StatelessWidget {
                   Text(
                     'Unlock all courses with a membership',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.spaceMono(
+                    style: GoogleFonts.poppins(
                       fontSize: 28,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
@@ -126,7 +126,7 @@ class Club260CoursesScreen extends StatelessWidget {
                   Text(
                     'Member and Advocate plans include unlimited access to all courses.',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       color: AppColors.textGray,
                       fontSize: 15,
                     ),
@@ -146,7 +146,7 @@ class Club260CoursesScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'VIEW MEMBERSHIP PLANS',
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w800,
                         letterSpacing: 1,
                       ),
@@ -238,7 +238,7 @@ class _CourseCardState extends State<_CourseCard> {
                           child: Text(
                             widget.course.level.name
                                 .toUpperCase(),
-                            style: GoogleFonts.spaceMono(
+                            style: GoogleFonts.poppins(
                               color: AppColors.lavender,
                               fontSize: 9,
                               letterSpacing: 1,
@@ -261,7 +261,7 @@ class _CourseCardState extends State<_CourseCard> {
                               const SizedBox(width: 4),
                               Text(
                                 widget.course.rating.toString(),
-                                style: GoogleFonts.spaceMono(
+                                style: GoogleFonts.poppins(
                                   color: AppColors.gold,
                                   fontSize: 11,
                                 ),
@@ -274,7 +274,7 @@ class _CourseCardState extends State<_CourseCard> {
                     const SizedBox(height: 10),
                     Text(
                       widget.course.title,
-                      style: GoogleFonts.spaceGrotesk(
+                      style: GoogleFonts.poppins(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: AppColors.white,
@@ -286,7 +286,7 @@ class _CourseCardState extends State<_CourseCard> {
                     const SizedBox(height: 8),
                     Text(
                       widget.course.instructor,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         color: AppColors.teal,
                         fontSize: 12,
                       ),
@@ -310,7 +310,7 @@ class _CourseCardState extends State<_CourseCard> {
                         foregroundColor: AppColors.black,
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 10),
-                        textStyle: GoogleFonts.spaceGrotesk(
+                        textStyle: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                         ),
@@ -350,7 +350,7 @@ class _CourseCardState extends State<_CourseCard> {
         const SizedBox(width: 4),
         Text(
           label,
-          style: GoogleFonts.inter(
+          style: GoogleFonts.poppins(
             color: AppColors.textGray,
             fontSize: 12,
           ),
