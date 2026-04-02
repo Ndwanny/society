@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/controllers/auth_controller.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/navbar.dart';
 import '../../shared/widgets/footer.dart';
@@ -117,7 +118,7 @@ class _Club260MembershipScreenState
                             '1 free course per month',
                           ],
                           ctaLabel: 'Get Started Free',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'explorer'),
                         )),
                         const SizedBox(width: 24),
                         Expanded(
@@ -139,7 +140,7 @@ class _Club260MembershipScreenState
                             'Priority support',
                           ],
                           ctaLabel: 'Become a Member',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'member'),
                         )),
                         const SizedBox(width: 24),
                         Expanded(
@@ -160,7 +161,7 @@ class _Club260MembershipScreenState
                             'Dedicated community space',
                           ],
                           ctaLabel: 'Become an Advocate',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'advocate'),
                         )),
                       ],
                     )
@@ -178,7 +179,7 @@ class _Club260MembershipScreenState
                             '1 free course per month',
                           ],
                           ctaLabel: 'Get Started Free',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'explorer'),
                         ),
                         const SizedBox(height: 24),
                         _PlanCard(
@@ -195,7 +196,7 @@ class _Club260MembershipScreenState
                             'Exclusive member events',
                           ],
                           ctaLabel: 'Become a Member',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'member'),
                         ),
                         const SizedBox(height: 24),
                         _PlanCard(
@@ -210,7 +211,7 @@ class _Club260MembershipScreenState
                             'Code260 educator toolkit',
                           ],
                           ctaLabel: 'Become an Advocate',
-                          onTap: () => context.go('/signup'),
+                          onTap: () => _handlePlanTap(context, 'advocate'),
                         ),
                       ],
                     ),
@@ -223,6 +224,14 @@ class _Club260MembershipScreenState
         ),
       ),
     );
+  }
+
+  void _handlePlanTap(BuildContext context, String plan) {
+    if (AuthController.instance.isLoggedIn) {
+      context.go('/club260/payment?plan=$plan&billing=${_annually ? 'annual' : 'monthly'}');
+    } else {
+      context.go('/signup?redirect=/club260/membership');
+    }
   }
 
   Widget _toggleOption(String label, bool isActive) {

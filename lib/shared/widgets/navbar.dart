@@ -344,6 +344,17 @@ class _NavUserAvatar extends StatelessWidget {
                     color: AppColors.white, fontSize: 13)),
           ]),
         ),
+        PopupMenuItem(
+          value: 'profile',
+          child: Row(children: [
+            const Icon(Icons.manage_accounts_outlined,
+                size: 16, color: AppColors.teal),
+            const SizedBox(width: 10),
+            Text('Edit Profile',
+                style: GoogleFonts.poppins(
+                    color: AppColors.white, fontSize: 13)),
+          ]),
+        ),
         const PopupMenuDivider(),
         PopupMenuItem(
           value: 'signout',
@@ -522,6 +533,17 @@ class AppDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(context);
                         context.go('/club260/feed');
+                      },
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.manage_accounts_outlined,
+                          color: AppColors.teal, size: 20),
+                      title: Text('Edit Profile',
+                          style: GoogleFonts.poppins(
+                              color: textColor, fontWeight: FontWeight.w500)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/club260/profile');
                       },
                     ),
                     ListTile(

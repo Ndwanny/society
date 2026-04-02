@@ -6,6 +6,8 @@ import '../../features/club260/club260_feed_screen.dart';
 import '../../features/club260/club260_messages_screen.dart';
 import '../../features/club260/club260_membership_screen.dart';
 import '../../features/club260/club260_courses_screen.dart';
+import '../../features/club260/club260_payment_screen.dart';
+import '../../features/club260/club260_profile_screen.dart';
 import '../../features/code260/code260_screen.dart';
 import '../../features/events/events_screen.dart';
 import '../../features/blog/blog_screen.dart';
@@ -39,6 +41,18 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: 'courses',
           builder: (context, state) => const Club260CoursesScreen(),
+        ),
+        GoRoute(
+          path: 'payment',
+          builder: (context, state) {
+            final plan = state.uri.queryParameters['plan'] ?? 'explorer';
+            final billing = state.uri.queryParameters['billing'] ?? 'monthly';
+            return Club260PaymentScreen(plan: plan, billing: billing);
+          },
+        ),
+        GoRoute(
+          path: 'profile',
+          builder: (context, state) => const Club260ProfileScreen(),
         ),
       ],
     ),
