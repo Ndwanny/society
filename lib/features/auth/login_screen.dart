@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,9 +22,21 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscure = true;
   bool _loading = false;
   bool _googleLoading = false;
+  StreamSubscription<AuthState>? _authSub;
+
+  @override
+  void initState() {
+    super.initState();
+    _authSub = _authRepo.authStateChanges.listen((state) {
+      if (state.event == AuthChangeEvent.signedIn && mounted) {
+        context.go('/club260/feed');
+      }
+    });
+  }
 
   @override
   void dispose() {
+    _authSub?.cancel();
     _emailCtrl.dispose();
     _passCtrl.dispose();
     super.dispose();
@@ -390,6 +403,23 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _loading = false;
   bool _googleLoading = false;
   bool _agreedToTerms = false;
+  StreamSubscription<AuthState>? _authSub;
+
+  @override
+  void initState() {
+    super.initState();
+    _authSub = _authRepo.authStateChanges.listen((state) {
+      if (state.event == AuthChangeEvent.signedIn && mounted) {
+        context.go('/club260/feed');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _authSub?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

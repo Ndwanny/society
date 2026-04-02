@@ -36,11 +36,14 @@ class AuthRepository {
   }
 
   /// Sign in with Google via Supabase OAuth.
-  /// On web the browser is redirected automatically; on mobile a WebView opens.
+  /// On web the current page is redirected to Google then back to the app.
   Future<void> signInWithGoogle() async {
+    final redirectTo = kIsWeb
+        ? Uri.base.origin          // e.g. https://society260.pages.dev
+        : 'io.supabase.society260://login-callback';
     await _client.auth.signInWithOAuth(
       OAuthProvider.google,
-      redirectTo: kIsWeb ? null : 'io.supabase.society260://login-callback',
+      redirectTo: redirectTo,
     );
   }
 
