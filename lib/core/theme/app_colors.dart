@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+/// Light mode semantic colors (warm cream palette)
+class LightColors {
+  static const Color background  = Color(0xFFF8F5F0);
+  static const Color surface     = Color(0xFFEEEAE3);
+  static const Color card        = Color(0xFFFFFFFF);
+  static const Color border      = Color(0xFFDDD7CC);
+  static const Color text        = Color(0xFF0F0F0F);
+  static const Color textGray    = Color(0xFF666666);
+  static const Color textMuted   = Color(0xFF999999);
+}
+
 class AppColors {
   // Brand Colors
   static const Color black = Color(0xFF0A0A0A);

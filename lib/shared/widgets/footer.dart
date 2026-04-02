@@ -10,10 +10,14 @@ class AppFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 768;
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.darkGray,
-        border: Border(top: BorderSide(color: AppColors.borderColor)),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.darkGray : LightColors.surface,
+        border: Border(
+            top: BorderSide(
+                color: isDark ? AppColors.borderColor : LightColors.border)),
       ),
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
       child: Column(
@@ -34,10 +38,11 @@ class AppFooter extends StatelessWidget {
                             fontSize: 24,
                             fontWeight: FontWeight.w900,
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text: 'SOCIETY',
-                              style: TextStyle(color: AppColors.white),
+                              style: TextStyle(
+                                  color: isDark ? AppColors.white : LightColors.text),
                             ),
                             TextSpan(
                               text: '260',

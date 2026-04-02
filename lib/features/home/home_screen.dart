@@ -434,10 +434,14 @@ class _AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 768;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDark ? AppColors.black : LightColors.background;
+    final headingColor = isDark ? AppColors.white : LightColors.text;
+    final bodyColor = isDark ? AppColors.offWhite : LightColors.textGray;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 40),
-      color: AppColors.black,
+      color: bgColor,
       child: Column(
         children: [
           if (isWide)
@@ -462,7 +466,7 @@ class _AboutSection extends StatelessWidget {
                         style: GoogleFonts.spaceMono(
                           fontSize: 36,
                           fontWeight: FontWeight.w900,
-                          color: AppColors.white,
+                          color: headingColor,
                           height: 1.1,
                           letterSpacing: -1,
                         ),
@@ -479,7 +483,7 @@ class _AboutSection extends StatelessWidget {
                       Text(
                         'Society 260 stands as an independent communicative initiative driven by a resolute commitment to instigate actionable awareness surrounding mental health.',
                         style: GoogleFonts.inter(
-                          color: AppColors.offWhite,
+                          color: bodyColor,
                           fontSize: 16,
                           height: 1.8,
                         ),
@@ -572,7 +576,9 @@ class _CommunityGallery extends StatelessWidget {
         vertical: 80,
         horizontal: isWide ? 60 : 24,
       ),
-      color: AppColors.black,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.black
+          : LightColors.background,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -581,7 +587,9 @@ class _CommunityGallery extends StatelessWidget {
             style: GoogleFonts.spaceMono(
               fontSize: isWide ? 52 : 34,
               fontWeight: FontWeight.w900,
-              color: AppColors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.white
+                  : LightColors.text,
               height: 1.0,
               letterSpacing: -2,
             ),
@@ -790,7 +798,9 @@ class _ProgramsSection extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 40),
-      color: AppColors.darkGray,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.darkGray
+          : LightColors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -808,7 +818,9 @@ class _ProgramsSection extends StatelessWidget {
             style: GoogleFonts.spaceMono(
               fontSize: 48,
               fontWeight: FontWeight.w900,
-              color: AppColors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.white
+                  : LightColors.text,
               letterSpacing: -2,
             ),
           ),
@@ -957,7 +969,9 @@ class _UpcomingEventsSection extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 40),
-      color: AppColors.black,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.black
+          : LightColors.background,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -983,7 +997,9 @@ class _UpcomingEventsSection extends StatelessWidget {
                       style: GoogleFonts.spaceMono(
                         fontSize: 32,
                         fontWeight: FontWeight.w900,
-                        color: AppColors.white,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.white
+                            : LightColors.text,
                         letterSpacing: -2,
                       ),
                     ),
@@ -1145,7 +1161,9 @@ class _BlogPreviewSection extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 40),
-      color: AppColors.darkGray,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? AppColors.darkGray
+          : LightColors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -1171,7 +1189,9 @@ class _BlogPreviewSection extends StatelessWidget {
                       style: GoogleFonts.spaceMono(
                         fontSize: 32,
                         fontWeight: FontWeight.w900,
-                        color: AppColors.white,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.white
+                            : LightColors.text,
                         letterSpacing: -2,
                       ),
                     ),
@@ -1312,7 +1332,9 @@ class _JoinSection extends StatelessWidget {
             style: GoogleFonts.spaceMono(
               fontSize: 48,
               fontWeight: FontWeight.w900,
-              color: AppColors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.white
+                  : LightColors.text,
               letterSpacing: -2,
               height: 1.1,
             ),
@@ -1322,7 +1344,9 @@ class _JoinSection extends StatelessWidget {
             'Become part of a community built on empathy, growth, and authentic self-expression.',
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
-              color: AppColors.textGray,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.textGray
+                  : LightColors.textGray,
               fontSize: 16,
               height: 1.7,
             ),
