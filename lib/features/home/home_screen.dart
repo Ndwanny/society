@@ -538,7 +538,9 @@ class _AboutSection extends StatelessWidget {
                   style: GoogleFonts.spaceMono(
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
-                    color: AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.white
+                        : LightColors.text,
                     height: 1.1,
                   ),
                 ),
@@ -588,7 +590,7 @@ class _CommunityGallery extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Real people.\nReal moments.',
+            'Real moments.',
             style: GoogleFonts.spaceMono(
               fontSize: isWide ? 52 : 34,
               fontWeight: FontWeight.w900,
@@ -615,8 +617,15 @@ class _CommunityGallery extends StatelessWidget {
     );
   }
 
+  void _openLightbox(BuildContext context, int startIndex) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.black.withOpacity(0.92),
+      builder: (_) => _GalleryLightbox(images: _images, initialIndex: startIndex),
+    );
+  }
+
   Widget _desktopGrid() {
-    // Two rows — alternate tall/short for masonry feel
     final heights1 = [300.0, 220.0, 280.0, 200.0];
     final heights2 = [200.0, 280.0, 220.0, 300.0];
 
@@ -631,6 +640,7 @@ class _CommunityGallery extends StatelessWidget {
                 child: _GalleryTile(
                   url: _images[i],
                   height: heights1[i],
+                  onTap: () => _openLightbox(context, i),
                 ).animate().fadeIn(delay: Duration(milliseconds: 100 * i), duration: 600.ms),
               ),
             );
@@ -646,6 +656,7 @@ class _CommunityGallery extends StatelessWidget {
                 child: _GalleryTile(
                   url: _images[i + 4],
                   height: heights2[i],
+                  onTap: () => _openLightbox(context, i + 4),
                 ).animate().fadeIn(delay: Duration(milliseconds: 100 * i + 200), duration: 600.ms),
               ),
             );
@@ -666,7 +677,11 @@ class _CommunityGallery extends StatelessWidget {
         childAspectRatio: 0.85,
       ),
       itemCount: _images.length,
-      itemBuilder: (_, i) => _GalleryTile(url: _images[i], height: 0),
+      itemBuilder: (_, i) => _GalleryTile(
+        url: _images[i],
+        height: 0,
+        onTap: () => _openLightbox(context, i),
+      ),
     );
   }
 }
@@ -674,7 +689,8 @@ class _CommunityGallery extends StatelessWidget {
 class _GalleryTile extends StatefulWidget {
   final String url;
   final double height;
-  const _GalleryTile({required this.url, required this.height});
+  final VoidCallback onTap;
+  const _GalleryTile({required this.url, required this.height, required this.onTap});
 
   @override
   State<_GalleryTile> createState() => _GalleryTileState();
@@ -689,68 +705,233 @@ class _GalleryTileState extends State<_GalleryTile> {
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       cursor: SystemMouseCursors.zoomIn,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        height: widget.height > 0 ? widget.height : null,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: _hovered
-                ? AppColors.teal.withOpacity(0.5)
-                : Colors.transparent,
-            width: 2,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          height: widget.height > 0 ? widget.height : null,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: _hovered ? AppColors.teal.withOpacity(0.5) : Colors.transparent,
+              width: 2,
+            ),
           ),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.network(
-                widget.url,
-                fit: BoxFit.cover,
-                loadingBuilder: (_, child, progress) => progress == null
-                    ? child
-                    : Container(
-                        color: AppColors.cardBg,
-                        child: const Center(
-                          child: SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 1.5,
-                              color: AppColors.teal,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.network(
+                  widget.url,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (_, child, progress) => progress == null
+                      ? child
+                      : Container(
+                          color: AppColors.cardBg,
+                          child: const Center(
+                            child: SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 1.5,
+                                color: AppColors.teal,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                errorBuilder: (_, __, ___) => Container(
-                  color: AppColors.cardBg,
-                  child: const Icon(
-                    Icons.image_outlined,
-                    color: AppColors.textMuted,
+                  errorBuilder: (_, __, ___) => Container(
+                    color: AppColors.cardBg,
+                    child: const Icon(Icons.image_outlined, color: AppColors.textMuted),
                   ),
                 ),
-              ),
-              AnimatedOpacity(
-                duration: const Duration(milliseconds: 250),
-                opacity: _hovered ? 1.0 : 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.transparent,
-                        AppColors.teal.withOpacity(0.35),
-                      ],
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 250),
+                  opacity: _hovered ? 1.0 : 0.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.transparent, AppColors.teal.withOpacity(0.35)],
+                      ),
+                    ),
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Icon(Icons.zoom_in_rounded, color: Colors.white, size: 32),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Gallery Lightbox Modal ───────────────────────────────────────────────────
+class _GalleryLightbox extends StatefulWidget {
+  final List<String> images;
+  final int initialIndex;
+  const _GalleryLightbox({required this.images, required this.initialIndex});
+
+  @override
+  State<_GalleryLightbox> createState() => _GalleryLightboxState();
+}
+
+class _GalleryLightboxState extends State<_GalleryLightbox> {
+  late int _current;
+  late PageController _pageCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _current = widget.initialIndex;
+    _pageCtrl = PageController(initialPage: widget.initialIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageCtrl.dispose();
+    super.dispose();
+  }
+
+  void _prev() {
+    if (_current > 0) {
+      _pageCtrl.previousPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    }
+  }
+
+  void _next() {
+    if (_current < widget.images.length - 1) {
+      _pageCtrl.nextPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.zero,
+      child: Stack(
+        children: [
+          // ── Swipeable image ───────────────────────────────────────────
+          PageView.builder(
+            controller: _pageCtrl,
+            itemCount: widget.images.length,
+            onPageChanged: (i) => setState(() => _current = i),
+            itemBuilder: (_, i) => Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 80),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(
+                    widget.images[i],
+                    fit: BoxFit.contain,
+                    errorBuilder: (_, __, ___) => Container(
+                      color: AppColors.cardBg,
+                      child: const Icon(Icons.broken_image_outlined,
+                          color: AppColors.textMuted, size: 48),
                     ),
                   ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+
+          // ── Close button ──────────────────────────────────────────────
+          Positioned(
+            top: 20,
+            right: 20,
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.15),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white.withOpacity(0.3)),
+                ),
+                child: const Icon(Icons.close, color: Colors.white, size: 20),
+              ),
+            ),
+          ),
+
+          // ── Prev arrow ────────────────────────────────────────────────
+          if (_current > 0)
+            Positioned(
+              left: 12,
+              top: 0,
+              bottom: 0,
+              child: Center(
+                child: GestureDetector(
+                  onTap: _prev,
+                  child: Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white.withOpacity(0.3)),
+                    ),
+                    child: const Icon(Icons.chevron_left, color: Colors.white, size: 28),
+                  ),
+                ),
+              ),
+            ),
+
+          // ── Next arrow ────────────────────────────────────────────────
+          if (_current < widget.images.length - 1)
+            Positioned(
+              right: 12,
+              top: 0,
+              bottom: 0,
+              child: Center(
+                child: GestureDetector(
+                  onTap: _next,
+                  child: Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white.withOpacity(0.3)),
+                    ),
+                    child: const Icon(Icons.chevron_right, color: Colors.white, size: 28),
+                  ),
+                ),
+              ),
+            ),
+
+          // ── Dot indicators ────────────────────────────────────────────
+          Positioned(
+            bottom: 24,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(widget.images.length, (i) {
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: i == _current ? 20 : 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: i == _current
+                        ? AppColors.teal
+                        : Colors.white.withOpacity(0.35),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                );
+              }),
+            ),
+          ),
+        ],
       ),
     );
   }
