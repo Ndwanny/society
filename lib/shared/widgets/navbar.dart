@@ -329,7 +329,7 @@ class _NavUserAvatar extends StatelessWidget {
         } else if (value == 'feed') {
           context.go('/club260/feed');
         } else if (value == 'profile') {
-          context.go('/club260/feed');
+          context.go('/club260/profile');
         }
       },
       itemBuilder: (_) => [

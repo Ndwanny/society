@@ -21,7 +21,7 @@ class _Club260FeedScreenState extends State<Club260FeedScreen>
   final _createPostController = TextEditingController();
   bool _showCreatePost = false;
   List<PostModel> _posts = PostModel.mockPosts;
-  int _mobileNavIndex = 0; // 0=Feed, 1=Discover, 2=Messages, 3=Courses
+  int _mobileNavIndex = 1; // 0=Home, 1=Feed, 2=Messages, 3=Courses, 4=Profile
 
   @override
   void initState() {
@@ -107,6 +107,9 @@ class _Club260FeedScreenState extends State<Club260FeedScreen>
             case 3:
               context.go('/club260/courses');
               break;
+            case 4:
+              context.go('/club260/profile');
+              break;
           }
         },
       ),
@@ -177,6 +180,7 @@ class _MobileBottomNav extends StatelessWidget {
             _navItem(Icons.explore_outlined, 'Feed', 1),
             _navItem(Icons.chat_bubble_outline, 'Messages', 2),
             _navItem(Icons.play_circle_outline, 'Courses', 3),
+            _navItem(Icons.manage_accounts_outlined, 'Profile', 4),
           ],
         ),
       ),
@@ -542,7 +546,13 @@ class _RightSidebar extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => context.go('/signup'),
+                      onPressed: () {
+                        if (AuthController.instance.isLoggedIn) {
+                          context.go('/events');
+                        } else {
+                          context.go('/signup');
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.teal,
                         foregroundColor: AppColors.black,
