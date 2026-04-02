@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -792,11 +791,14 @@ class _GoogleButton extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.google,
-                        size: 14,
-                        color: Color(0xFF4285F4),
+                    child: Center(
+                      child: Text(
+                        'G',
+                        style: GoogleFonts.roboto(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFF4285F4),
+                        ),
                       ),
                     ),
                   ),
