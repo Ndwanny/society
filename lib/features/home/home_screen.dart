@@ -611,7 +611,7 @@ class _CommunityGallery extends StatelessWidget {
             ),
           ).animate().fadeIn(delay: 200.ms),
           const SizedBox(height: 48),
-          if (isWide) _desktopGrid() else _mobileGrid(),
+          if (isWide) _desktopGrid(context) else _mobileGrid(context),
         ],
       ),
     );
@@ -625,7 +625,7 @@ class _CommunityGallery extends StatelessWidget {
     );
   }
 
-  Widget _desktopGrid() {
+  Widget _desktopGrid(BuildContext context) {
     final heights1 = [300.0, 220.0, 280.0, 200.0];
     final heights2 = [200.0, 280.0, 220.0, 300.0];
 
@@ -666,7 +666,7 @@ class _CommunityGallery extends StatelessWidget {
     );
   }
 
-  Widget _mobileGrid() {
+  Widget _mobileGrid(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
