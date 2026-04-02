@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -20,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passCtrl = TextEditingController();
   bool _obscure = true;
   bool _loading = false;
+  bool _googleLoading = false;
 
   @override
   void dispose() {
@@ -267,6 +269,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         const _Divider(),
                         const SizedBox(height: 24),
 
+                        // Google sign-in
+                        _GoogleButton(
+                          loading: _googleLoading,
+                          onPressed: _handleGoogleSignIn,
+                        ),
+
+                        const SizedBox(height: 20),
+
                         // Admin link
                         Center(
                           child: TextButton(
@@ -318,6 +328,25 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  void _handleGoogleSignIn() async {
+    setState(() => _googleLoading = true);
+    try {
+      await _authRepo.signInWithGoogle();
+      // On web, the page redirects — no need to navigate manually.
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Google sign-in failed: $e'),
+            backgroundColor: AppColors.coral,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _googleLoading = false);
+    }
+  }
+
   void _handleLogin() async {
     final email = _emailCtrl.text.trim();
     final password = _passCtrl.text;
@@ -360,6 +389,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _passCtrl     = TextEditingController();
   bool _obscure = true;
   bool _loading = false;
+  bool _googleLoading = false;
   bool _agreedToTerms = false;
 
   @override
@@ -571,6 +601,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                   ),
                           ),
                         ),
+
+                        const SizedBox(height: 24),
+                        const _Divider(),
+                        const SizedBox(height: 24),
+
+                        _GoogleButton(
+                          loading: _googleLoading,
+                          onPressed: _handleGoogleSignIn,
+                        ),
                       ],
                     ),
                   ),
@@ -581,6 +620,24 @@ class _SignupScreenState extends State<SignupScreen> {
         ],
       ),
     );
+  }
+
+  void _handleGoogleSignIn() async {
+    setState(() => _googleLoading = true);
+    try {
+      await _authRepo.signInWithGoogle();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Google sign-in failed: $e'),
+            backgroundColor: AppColors.coral,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _googleLoading = false);
+    }
   }
 
   Widget _field(
@@ -690,6 +747,71 @@ class _Divider extends StatelessWidget {
         const Expanded(
             child: Divider(color: AppColors.borderColor, height: 1)),
       ],
+    );
+  }
+}
+
+// ─── Google Sign-In Button ────────────────────────────────────────────────────
+class _GoogleButton extends StatelessWidget {
+  final bool loading;
+  final VoidCallback onPressed;
+  const _GoogleButton({required this.loading, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton(
+        onPressed: loading ? null : onPressed,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: AppColors.cardBg,
+          foregroundColor: AppColors.white,
+          side: const BorderSide(color: AppColors.borderColor),
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: loading
+            ? const SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppColors.teal,
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Google G icon in brand colours
+                  Container(
+                    width: 22,
+                    height: 22,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Center(
+                      child: FaIcon(
+                        FontAwesomeIcons.google,
+                        size: 14,
+                        color: Color(0xFF4285F4),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    'Continue with Google',
+                    style: GoogleFonts.spaceGrotesk(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      color: AppColors.white,
+                    ),
+                  ),
+                ],
+              ),
+      ),
     );
   }
 }

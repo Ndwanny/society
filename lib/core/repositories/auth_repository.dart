@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../services/supabase_service.dart';
 
@@ -32,6 +33,15 @@ class AuthRepository {
     );
     if (response.user == null) throw Exception('Sign up failed. Please try again.');
     return response.user!;
+  }
+
+  /// Sign in with Google via Supabase OAuth.
+  /// On web the browser is redirected automatically; on mobile a WebView opens.
+  Future<void> signInWithGoogle() async {
+    await _client.auth.signInWithOAuth(
+      OAuthProvider.google,
+      redirectTo: kIsWeb ? null : 'io.supabase.society260://login-callback',
+    );
   }
 
   /// Sign out current user.
