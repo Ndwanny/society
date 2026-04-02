@@ -830,15 +830,56 @@ class _ProgramsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 60),
-          GridView.count(
-            crossAxisCount: isWide ? 2 : 1,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisSpacing: 24,
-            mainAxisSpacing: 24,
-            childAspectRatio: isWide ? 1.8 : 2.2,
-            children: programs,
-          ),
+          if (isWide)
+            Column(
+              children: [
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(child: programs[0]),
+                      const SizedBox(width: 24),
+                      Expanded(child: programs[1]),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(child: programs[2]),
+                      const SizedBox(width: 24),
+                      Expanded(child: programs[3]),
+                    ],
+                  ),
+                ),
+                if (programs.length > 4) ...[
+                  const SizedBox(height: 24),
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        for (int i = 4; i < programs.length; i++) ...[
+                          if (i > 4) const SizedBox(width: 24),
+                          Expanded(child: programs[i]),
+                        ],
+                        if (programs.length.isOdd) const Expanded(child: SizedBox()),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
+            )
+          else
+            Column(
+              children: programs
+                  .map((p) => Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: p,
+                      ))
+                  .toList(),
+            ),
         ],
       ),
     );
@@ -894,6 +935,7 @@ class _ProgramCardState extends State<_ProgramCard> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 children: [
@@ -924,7 +966,7 @@ class _ProgramCardState extends State<_ProgramCard> {
                   ),
                 ],
               ),
-              const Spacer(),
+              const SizedBox(height: 24),
               Text(
                 widget.title,
                 style: GoogleFonts.spaceMono(
