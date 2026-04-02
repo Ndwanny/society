@@ -744,14 +744,20 @@ class _CreatePostWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            alignment: WrapAlignment.spaceBetween,
             children: [
-              _postTypeButton(Icons.image_outlined, 'Image'),
-              const SizedBox(width: 8),
-              _postTypeButton(Icons.mic_outlined, 'Voice Note'),
-              const SizedBox(width: 8),
-              _postTypeButton(Icons.videocam_outlined, 'Video'),
-              const Spacer(),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _postTypeButton(Icons.image_outlined, 'Image'),
+                  _postTypeButton(Icons.mic_outlined, 'Voice Note'),
+                  _postTypeButton(Icons.videocam_outlined, 'Video'),
+                ],
+              ),
               ElevatedButton(
                 onPressed: () {
                   if (controller.text.trim().isNotEmpty) {
