@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../../core/controllers/auth_controller.dart';
+import '../../core/services/supabase_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/models/models.dart';
 
@@ -18,11 +21,12 @@ class _Club260FeedScreenState extends State<Club260FeedScreen>
   final _createPostController = TextEditingController();
   bool _showCreatePost = false;
   List<PostModel> _posts = PostModel.mockPosts;
+  int _mobileNavIndex = 0; // 0=Feed, 1=Discover, 2=Messages, 3=Courses
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -36,61 +40,174 @@ class _Club260FeedScreenState extends State<Club260FeedScreen>
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 1100;
 
+    if (isWide) {
+      return Scaffold(
+        backgroundColor: AppColors.black,
+        body: Row(
+          children: [
+            _LeftSidebar(),
+            Expanded(child: _feedColumn()),
+            _RightSidebar(),
+          ],
+        ),
+      );
+    }
+
+    // ── Mobile layout ──────────────────────────────────────────────────────
     return Scaffold(
       backgroundColor: AppColors.black,
-      body: Row(
+      body: Column(
         children: [
-          // Left sidebar
-          if (isWide) _LeftSidebar(),
-
-          // Main feed
-          Expanded(
-            child: Column(
-              children: [
-                _FeedHeader(
-                  onCreatePost: () =>
-                      setState(() => _showCreatePost = !_showCreatePost),
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        if (_showCreatePost)
-                          _CreatePostWidget(
-                            controller: _createPostController,
-                            onPost: (text) {
-                              setState(() {
-                                _posts = [
-                                  PostModel(
-                                    id: DateTime.now()
-                                        .millisecondsSinceEpoch
-                                        .toString(),
-                                    authorId: 'me',
-                                    authorName: 'You',
-                                    type: PostType.text,
-                                    textContent: text,
-                                    createdAt: DateTime.now(),
-                                  ),
-                                  ..._posts,
-                                ];
-                                _showCreatePost = false;
-                                _createPostController.clear();
-                              });
-                            },
-                          ),
-                        ..._posts.map((post) => PostCard(post: post)),
-                        const SizedBox(height: 48),
-                      ],
-                    ),
-                  ),
-                ),
+          _FeedHeader(
+            onCreatePost: () =>
+                setState(() => _showCreatePost = !_showCreatePost),
+          ),
+          // Tab bar: Feed | Discover
+          Container(
+            color: AppColors.black,
+            child: TabBar(
+              controller: _tabController,
+              indicatorColor: AppColors.teal,
+              labelColor: AppColors.teal,
+              unselectedLabelColor: AppColors.textGray,
+              labelStyle: GoogleFonts.poppins(
+                  fontSize: 13, fontWeight: FontWeight.w600),
+              tabs: const [
+                Tab(text: 'Feed'),
+                Tab(text: 'Discover'),
               ],
             ),
           ),
-
-          // Right sidebar
-          if (isWide) _RightSidebar(),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                // Feed tab
+                _feedColumn(),
+                // Discover tab (right sidebar content)
+                _RightSidebar(scrollable: true),
+              ],
+            ),
+          ),
         ],
+      ),
+      bottomNavigationBar: _MobileBottomNav(
+        currentIndex: _mobileNavIndex,
+        onTap: (i) {
+          setState(() => _mobileNavIndex = i);
+          switch (i) {
+            case 0:
+              context.go('/');
+              break;
+            case 1:
+              break; // already on feed
+            case 2:
+              context.go('/club260/messages');
+              break;
+            case 3:
+              context.go('/club260/courses');
+              break;
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _feedColumn() {
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                if (_showCreatePost)
+                  _CreatePostWidget(
+                    controller: _createPostController,
+                    onPost: (text) {
+                      final ac = AuthController.instance;
+                      setState(() {
+                        _posts = [
+                          PostModel(
+                            id: DateTime.now()
+                                .millisecondsSinceEpoch
+                                .toString(),
+                            authorId: 'me',
+                            authorName: ac.displayName,
+                            type: PostType.text,
+                            textContent: text,
+                            createdAt: DateTime.now(),
+                          ),
+                          ..._posts,
+                        ];
+                        _showCreatePost = false;
+                        _createPostController.clear();
+                      });
+                    },
+                  ),
+                ..._posts.map((post) => PostCard(post: post)),
+                const SizedBox(height: 48),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ─── Mobile Bottom Nav ────────────────────────────────────────────────────────
+class _MobileBottomNav extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const _MobileBottomNav(
+      {required this.currentIndex, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.darkGray,
+        border: Border(top: BorderSide(color: AppColors.borderColor)),
+      ),
+      child: SafeArea(
+        child: Row(
+          children: [
+            _navItem(Icons.home_outlined, 'Home', 0),
+            _navItem(Icons.explore_outlined, 'Feed', 1),
+            _navItem(Icons.chat_bubble_outline, 'Messages', 2),
+            _navItem(Icons.play_circle_outline, 'Courses', 3),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _navItem(IconData icon, String label, int index) {
+    final active = currentIndex == index;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => onTap(index),
+        behavior: HitTestBehavior.opaque,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon,
+                  size: 22,
+                  color: active ? AppColors.teal : AppColors.textGray),
+              const SizedBox(height: 3),
+              Text(label,
+                  style: GoogleFonts.poppins(
+                    fontSize: 10,
+                    color: active ? AppColors.teal : AppColors.textGray,
+                    fontWeight:
+                        active ? FontWeight.w600 : FontWeight.w400,
+                  )),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -161,70 +278,95 @@ class _LeftSidebar extends StatelessWidget {
           // User card
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppColors.cardBg,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.borderColor),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            child: ValueListenableBuilder<User?>(
+              valueListenable: AuthController.instance.userNotifier,
+              builder: (context, user, _) {
+                final avatarUrl =
+                    user?.userMetadata?['avatar_url'] as String?;
+                final displayName = (user?.userMetadata?['full_name']
+                        as String?) ??
+                    (user?.userMetadata?['display_name'] as String?) ??
+                    user?.email?.split('@').first ??
+                    'Guest User';
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.cardBg,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColors.borderColor),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: AppColors.teal.withOpacity(0.2),
-                        child: const Text('U',
-                            style: TextStyle(color: AppColors.teal)),
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: [
-                          Text(
-                            'Guest User',
-                            style: GoogleFonts.poppins(
-                              color: AppColors.white,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundColor:
+                                AppColors.teal.withOpacity(0.2),
+                            backgroundImage: avatarUrl != null
+                                ? NetworkImage(avatarUrl)
+                                : null,
+                            child: avatarUrl == null
+                                ? Text(
+                                    displayName[0].toUpperCase(),
+                                    style: const TextStyle(
+                                        color: AppColors.teal),
+                                  )
+                                : null,
                           ),
-                          Text(
-                            'Free Plan',
-                            style: GoogleFonts.poppins(
-                              color: AppColors.textGray,
-                              fontSize: 11,
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  displayName,
+                                  style: GoogleFonts.poppins(
+                                    color: AppColors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  'Free Plan',
+                                  style: GoogleFonts.poppins(
+                                    color: AppColors.textGray,
+                                    fontSize: 11,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () =>
-                          context.go('/club260/membership'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.teal,
-                        foregroundColor: AppColors.black,
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        textStyle: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () =>
+                              context.go('/club260/membership'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.teal,
+                            foregroundColor: AppColors.black,
+                            padding:
+                                const EdgeInsets.symmetric(vertical: 10),
+                            textStyle: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text('UPGRADE'),
                         ),
                       ),
-                      child: const Text('UPGRADE'),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ],
@@ -275,14 +417,21 @@ class _LeftSidebar extends StatelessWidget {
 
 // ─── Right Sidebar ────────────────────────────────────────────────────────────
 class _RightSidebar extends StatelessWidget {
+  final bool scrollable;
+  const _RightSidebar({this.scrollable = false});
+
   @override
   Widget build(BuildContext context) {
+    final isDesktop = !scrollable;
     return Container(
-      width: 280,
-      height: double.infinity,
-      decoration: const BoxDecoration(
+      width: isDesktop ? 280 : double.infinity,
+      height: isDesktop ? double.infinity : null,
+      decoration: BoxDecoration(
         color: AppColors.darkGray,
-        border: Border(left: BorderSide(color: AppColors.borderColor)),
+        border: isDesktop
+            ? const Border(
+                left: BorderSide(color: AppColors.borderColor))
+            : null,
       ),
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
