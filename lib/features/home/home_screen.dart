@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import 'package:video_player/video_player.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/navbar.dart';
 import '../../shared/widgets/footer.dart';
@@ -62,55 +63,75 @@ class _HomeScreenState extends State<HomeScreen>
 }
 
 // ─── Hero Section ────────────────────────────────────────────────────────────
-class _HeroSection extends StatelessWidget {
+class _HeroSection extends StatefulWidget {
   final double scrollOffset;
   const _HeroSection({required this.scrollOffset});
+
+  @override
+  State<_HeroSection> createState() => _HeroSectionState();
+}
+
+class _HeroSectionState extends State<_HeroSection> {
+  late VideoPlayerController _videoCtrl;
+  bool _videoReady = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoCtrl = VideoPlayerController.asset('assets/videos/hero.mp4')
+      ..initialize().then((_) {
+        if (mounted) {
+          setState(() => _videoReady = true);
+          _videoCtrl
+            ..setLooping(true)
+            ..setVolume(0)
+            ..play();
+        }
+      });
+  }
+
+  @override
+  void dispose() {
+    _videoCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       height: size.height,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFF0A0A0A),
-            Color(0xFF0D1A18),
-            Color(0xFF0A0A0A),
-          ],
-        ),
-      ),
       child: Stack(
+        fit: StackFit.expand,
         children: [
-          // Background noise texture effect
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _NoisePainter(scrollOffset),
-            ),
-          ),
-
-          // Gradient orbs
-          Positioned(
-            top: -200,
-            right: -100,
-            child: Container(
-              width: 600,
-              height: 600,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    AppColors.teal.withOpacity(0.12),
-                    Colors.transparent,
-                  ],
+          // ── Video background ──────────────────────────────────────────
+          if (_videoReady)
+            FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: _videoCtrl.value.size.width,
+                height: _videoCtrl.value.size.height,
+                child: VideoPlayer(_videoCtrl),
+              ),
+            )
+          else
+            // Fallback gradient while video loads
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF0A0A0A), Color(0xFF0D1A18), Color(0xFF0A0A0A)],
                 ),
               ),
             ),
-          ),
+
+          // ── Subtle overlay — video has its own dark grading ──────────
+          Container(color: Colors.black.withOpacity(0.25)),
+
+          // ── Teal colour tint at bottom-left ──────────────────────────
           Positioned(
             bottom: 0,
             left: -200,
@@ -121,7 +142,7 @@ class _HeroSection extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    AppColors.coral.withOpacity(0.08),
+                    AppColors.teal.withOpacity(0.10),
                     Colors.transparent,
                   ],
                 ),
@@ -129,7 +150,14 @@ class _HeroSection extends StatelessWidget {
             ),
           ),
 
-          // Floating image collage — desktop only
+          // ── Noise texture ─────────────────────────────────────────────
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _NoisePainter(widget.scrollOffset),
+            ),
+          ),
+
+          // ── Floating image collage — desktop only ─────────────────────
           if (size.width > 1100)
             Positioned(
               right: 60,
@@ -172,7 +200,7 @@ class _HeroSection extends StatelessWidget {
               ),
             ),
 
-          // Main content
+          // ── Main content ──────────────────────────────────────────────
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
@@ -181,16 +209,10 @@ class _HeroSection extends StatelessWidget {
               children: [
                 const SizedBox(height: 72),
 
-                // Tag line
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 6,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppColors.teal.withOpacity(0.5),
-                    ),
+                    border: Border.all(color: AppColors.teal.withOpacity(0.5)),
                     borderRadius: BorderRadius.circular(100),
                     color: AppColors.teal.withOpacity(0.08),
                   ),
@@ -206,15 +228,12 @@ class _HeroSection extends StatelessWidget {
 
                 const SizedBox(height: 32),
 
-                // Main headline
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 900),
                   child: Text(
                     'Society\n260',
                     style: GoogleFonts.spaceMono(
-                      fontSize: MediaQuery.of(context).size.width > 768
-                          ? 120
-                          : 72,
+                      fontSize: size.width > 768 ? 120 : 72,
                       fontWeight: FontWeight.w900,
                       color: AppColors.white,
                       height: 0.9,
@@ -234,7 +253,7 @@ class _HeroSection extends StatelessWidget {
                     'An independent initiative dedicated to fostering actionable mental health awareness. Creating inclusive, safe spaces for self-expression and growth.',
                     style: GoogleFonts.inter(
                       fontSize: 16,
-                      color: AppColors.textGray,
+                      color: AppColors.offWhite.withOpacity(0.85),
                       height: 1.7,
                     ),
                   ).animate().fadeIn(delay: 400.ms, duration: 800.ms),
@@ -251,13 +270,8 @@ class _HeroSection extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.teal,
                         foregroundColor: AppColors.black,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 18,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                         elevation: 0,
                       ),
                       child: Text(
@@ -275,13 +289,8 @@ class _HeroSection extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                         foregroundColor: AppColors.white,
                         side: const BorderSide(color: AppColors.borderColor),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 18,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                       ),
                       child: Text(
                         'EXPLORE CODE260',
@@ -297,7 +306,6 @@ class _HeroSection extends StatelessWidget {
 
                 const SizedBox(height: 80),
 
-                // Scroll indicator
                 Column(
                   children: [
                     Text(
@@ -311,10 +319,7 @@ class _HeroSection extends StatelessWidget {
                     const SizedBox(height: 8),
                     const SizedBox(
                       height: 40,
-                      child: VerticalDivider(
-                        color: AppColors.borderColor,
-                        width: 1,
-                      ),
+                      child: VerticalDivider(color: AppColors.borderColor, width: 1),
                     ),
                   ],
                 ).animate().fadeIn(delay: 1200.ms),
