@@ -115,7 +115,10 @@ class _Club260Hero extends StatelessWidget {
           }),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 120),
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width > 768 ? 60 : 24,
+              vertical: MediaQuery.of(context).size.width > 768 ? 120 : 80,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -328,30 +331,46 @@ class _Club260Features extends StatelessWidget {
           Text(
             'Everything in one place',
             style: GoogleFonts.poppins(
-              fontSize: 36,
+              fontSize: isWide ? 36 : 28,
               fontWeight: FontWeight.w900,
               color: AppColors.white,
               letterSpacing: -1,
             ),
           ),
-          const SizedBox(height: 48),
-          GridView.count(
-            crossAxisCount: isWide ? 4 : 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: 0.85,
-            children: features
-                .map((f) => _FeatureCard(
-                      icon: f.$1,
-                      title: f.$2,
-                      description: f.$3,
-                      route: f.$4,
-                      color: f.$5,
-                    ))
-                .toList(),
-          ),
+          const SizedBox(height: 32),
+          if (isWide)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: features
+                  .map((f) => Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: _FeatureCard(
+                            icon: f.$1,
+                            title: f.$2,
+                            description: f.$3,
+                            route: f.$4,
+                            color: f.$5,
+                          ),
+                        ),
+                      ))
+                  .toList(),
+            )
+          else
+            Column(
+              children: features
+                  .map((f) => Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: _FeatureCard(
+                          icon: f.$1,
+                          title: f.$2,
+                          description: f.$3,
+                          route: f.$4,
+                          color: f.$5,
+                        ),
+                      ))
+                  .toList(),
+            ),
         ],
       ),
     );
@@ -404,6 +423,7 @@ class _FeatureCardState extends State<_FeatureCard> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 padding: const EdgeInsets.all(12),
@@ -413,7 +433,7 @@ class _FeatureCardState extends State<_FeatureCard> {
                 ),
                 child: Icon(widget.icon, color: widget.color, size: 22),
               ),
-              const Spacer(),
+              const SizedBox(height: 20),
               Text(
                 widget.title,
                 style: GoogleFonts.poppins(
@@ -426,9 +446,9 @@ class _FeatureCardState extends State<_FeatureCard> {
               Text(
                 widget.description,
                 style: GoogleFonts.poppins(
-                  fontSize: 12,
+                  fontSize: 13,
                   color: AppColors.textGray,
-                  height: 1.5,
+                  height: 1.6,
                 ),
               ),
             ],

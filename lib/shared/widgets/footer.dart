@@ -166,26 +166,49 @@ class AppFooter extends StatelessWidget {
           const Divider(color: AppColors.borderColor),
           const SizedBox(height: 24),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '© 2025 Society260. All rights reserved.',
-                style: GoogleFonts.poppins(
-                  color: AppColors.textMuted,
-                  fontSize: 12,
+          if (isWide)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '© 2025 Society260. All rights reserved.',
+                  style: GoogleFonts.poppins(
+                    color: AppColors.textMuted,
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-              Text(
-                'A safe space in motion / Always',
-                style: GoogleFonts.poppins(
-                  color: AppColors.textMuted,
-                  fontSize: 11,
-                  letterSpacing: 0.5,
+                Text(
+                  'A safe space in motion / Always',
+                  style: GoogleFonts.poppins(
+                    color: AppColors.textMuted,
+                    fontSize: 11,
+                    letterSpacing: 0.5,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            )
+          else
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '© 2025 Society260. All rights reserved.',
+                  style: GoogleFonts.poppins(
+                    color: AppColors.textMuted,
+                    fontSize: 12,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  'A safe space in motion / Always',
+                  style: GoogleFonts.poppins(
+                    color: AppColors.textMuted,
+                    fontSize: 11,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     );
