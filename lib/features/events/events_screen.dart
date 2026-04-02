@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/controllers/auth_controller.dart';
 import '../../core/repositories/events_repository.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/navbar.dart';
@@ -263,7 +264,9 @@ class _FeaturedEvent extends StatelessWidget {
                     _eventMeta(Icons.people_outline,
                         '${event.attendees} attending'),
                     ElevatedButton(
-                      onPressed: () => context.go('/signup'),
+                      onPressed: () => AuthController.instance.isLoggedIn
+                          ? context.go('/events')
+                          : context.go('/signup'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.coral,
                         foregroundColor: AppColors.white,
@@ -611,7 +614,11 @@ class _EventCardState extends State<_EventCard> {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pop(ctx);
-                        context.go('/signup');
+                        if (AuthController.instance.isLoggedIn) {
+                          context.go('/events');
+                        } else {
+                          context.go('/signup');
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.coral,

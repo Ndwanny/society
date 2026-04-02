@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
+import '../../core/controllers/auth_controller.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/navbar.dart';
 import '../../shared/widgets/footer.dart';
@@ -1586,7 +1587,9 @@ class _JoinSection extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () => context.go('/signup'),
+                onPressed: () => AuthController.instance.isLoggedIn
+                    ? context.go('/club260/feed')
+                    : context.go('/signup'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.teal,
                   foregroundColor: AppColors.black,

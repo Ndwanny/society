@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../core/controllers/auth_controller.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/navbar.dart';
 import '../../shared/widgets/footer.dart';
@@ -503,7 +504,9 @@ class _NextSessionBanner extends StatelessWidget {
       );
 
   Widget _rsvpButton(BuildContext context) => ElevatedButton(
-        onPressed: () => context.go('/signup'),
+        onPressed: () => AuthController.instance.isLoggedIn
+            ? context.go('/events')
+            : context.go('/signup'),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.teal,
           foregroundColor: AppColors.black,
